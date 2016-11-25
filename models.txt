@@ -1,0 +1,29 @@
+user-first_name(Opt), last_name(Opt), username(U), email(U), password, bio(Opt), hobbies(Opt), favorite_game(Opt), age(Opt), last_visit, admin_status, friends(A)
+	first user becomes admin, could later implement a special password upon registration
+
+friend- userId1(A), username1, userId2(A), usesrname2
+	both users have this friend ID in their friends, but only on entry in the friends collection
+
+pending_friends- userId1(A), username1, userId2(A), username2
+	gets deleted when the request is approved or ignored 
+
+Topic-adminFlag, userFlag, topic, category, username, userId,, posts(A)
+	need to update the updatedAt field overtime this is edited or a new post/comment, for the dashboard
+
+Post-adminFlag, userFlag, post, _topic(A), username, userId, comments(A), likes(A), Dislikes(A)
+
+comment-adminFlag, userFlag, comment, _post(A), username, userId, likes(A), dislikes(A), 
+
+like one for post and comment- _post/_comment, userId, username
+
+dislike one for post and comment- _post/_comment, userId, username
+	
+
+
+
+
+deleting- can delete if you made it (or any posts/comments in a topic/post you’ve made), or it you are admin
+Editing- can only edit things you’ve made it at all(perhaps just topics you’ve made?)
+Adding/creating/posting-can’t be done unless you’re logged in
+
+partials - 1 login, 2 reg, 3 dashboard, 4 userInfo, 5 topicInfo, 6 createTopic, 7 about, 8 fan, 9 membersAll, 10 Admin, 11 Profile, 10 likes/Dislikes for specific post/comment, 11 postInfo
