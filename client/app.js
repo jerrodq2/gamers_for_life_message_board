@@ -3,23 +3,17 @@ var app = angular.module('myApp', ['ngRoute', 'ngCookies'])
 app.config(function ($routeProvider) {
 
 $routeProvider
-  .when('/welcome', {
-    templateUrl: 'partials/loginReg.html'
-  })
   .when('/', {
-    templateUrl: 'partials/users.html'
+    templateUrl: 'partials/login.html'
   })
-  .otherwise('/welcome')
+  .when('/register', {
+    templateUrl: 'partials/register.html'
+  })
+  .when('/dashboard', {
+    templateUrl: 'partials/dashboard.html'
+  })
+  .otherwise('/')
 })
 
 
 // *******************End*******************
-
-
-
-//   // Setting a cookie
-//   $cookies.put('myFavorite', 'oatmeal')
-//    // Retrieving a cookie
-//   var favoriteCookie = $cookies.get('myFavorite')
-//    // Removing cookie
-//    $cookies.remove('myFavorite')
