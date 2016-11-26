@@ -4,10 +4,13 @@ var User = mongoose.model('User')
 module.exports = {
   register: function(req, res){
     User.find({}, function(err, results){
+      console.log(results);
       var user = new User(req.body)
-      if(!results){
+      if(results.length == 0){
+        console.log('hi');
         user.admin_status = true
       } else{
+        console.log('wrong');
         user.admin_status = false
       }
       user.last_visit = new Date()//automatically create last_visit

@@ -1,5 +1,5 @@
 
-app.factory('exampleFactory', ['$http', '$routeParams', '$location','$cookies', function(http, routeP, location, cookie){
+app.factory('dashboardFactory', ['$http', '$routeParams', '$location','$cookies', function(http, routeP, location, cookie){
   var factory ={};
 
 

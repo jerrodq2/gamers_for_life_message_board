@@ -44,7 +44,7 @@ app.factory('loginRegFactory', ['$http', '$location','$cookies', function(http, 
     // Validations for convenience of the user
     if(angular.isUndefined(data)){
       return callback('All fields must be filled out')
-    } else if(angular.isUndefined(data.username) || data.email.length < 1){
+    } else if(angular.isUndefined(data.username) || data.username.length < 1){
       return callback("Username can't be blank")
     } else if(angular.isUndefined(data.password) || data.password.length < 1){
       return callback("Password can't be blank")
