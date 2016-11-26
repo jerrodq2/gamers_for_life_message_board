@@ -1,6 +1,6 @@
-<div ng-controller='dashboardController as dash'>
+<div ng-controller>
   <h4 class='navbar'>
-    <span ng-show='!dash.username'><a href="#/">Login</a></span>
+    <span ng-shos='!dash.username'><a href="#/">Login</a></span>
     <span ng-show='dash.admin_status'><a href="#/admin">Admin</a></span>
     <a href="#/profile">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a>
     <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>

@@ -1,5 +1,7 @@
 <div ng-controller='loginRegController as lrc'>
-  <h4><a href="#/register">Register</a> <a href="#/dashboard">Dashboard</a></h4>
+  <h4 class='navbar'>
+    <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a>
+  </h4>
   <h1>Login</h1>
   {{lrc.loginFlash}}
   <form>
@@ -7,4 +9,7 @@
     Password: <input type="password" ng-model='lrc.log.password'>
     <input type="submit" ng-click='lrc.login()' value="Login">
   </form>
+  <p>
+    Not yet a member? <a href="#/register">Register</a> now!
+  </p>
 </div>

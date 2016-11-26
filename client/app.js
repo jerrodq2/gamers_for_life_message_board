@@ -12,6 +12,21 @@ $routeProvider
   .when('/dashboard', {
     templateUrl: 'partials/dashboard.html'
   })
+  .when('/profile', {
+    templateUrl: 'partials/admin.html'
+  })
+  .when('/members', {
+    templateUrl: 'partials/members.html'
+  })
+  .when('/faq', {
+    templateUrl: 'partials/faq.html'
+  })
+  .when('/about', {
+    templateUrl: 'partials/about.html'
+  })
+  .when('/admin', {
+    templateUrl: 'partials/admin.html'
+  })
   .otherwise('/')
 })
 
