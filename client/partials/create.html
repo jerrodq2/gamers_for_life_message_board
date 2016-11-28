@@ -1,0 +1,30 @@
+<div ng-controller='dashboardController as dash'>
+  <h4 class='navbar'>
+    <span ng-show='!dash.username'><a href="#/">Login</a></span>
+    <span ng-show='dash.admin_status'><a href="#/admin">Admin</a></span>
+    <a href="#/profile">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
+    <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
+  </h4>
+  <h1>New Topic</h1>
+  {{dash.flash}}
+  <form>
+    Topic: <input type="text" ng-model='dash.newTopic.topic'>
+    Category: <select ng-model='dash.newTopic.category'>
+      <option value="Consoles">Consoles</option>
+      <option value="Retro Gaming">Retro Gaming</option>
+      <option value="News">News</option>
+      <option value="Upcoming Games/Tech">Upcoming Games/Tech</option>
+      <option value="Specific Series">Specific Series</option>
+      <option value="Specific Game">Specific Game</option>
+      <option value="PC">PC</option>
+      <option value="Indie">Indie</option>
+      <option value="Handheld">Handheld</option>
+      <option value="Collecting">Collecting</option>
+      <option value="Conventions/Events">Conventions/Events</option>
+      <option value="Other">Other</option>
+    </select>
+    Description: <textarea ng-model='dash.newTopic.description' rows="8" cols="80"></textarea>
+    <input type="submit" ng-click='dash.create()' value="Create New Topic">
+  </form>
+  <a href="#/dashboard">Cancel</a>
+</div>

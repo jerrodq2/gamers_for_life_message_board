@@ -15,6 +15,11 @@ var TopicSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  description:{
+    type: String,
+    required: true,
+    minlength: 10,
+  },
   category:{
     type: String,
     required: true,

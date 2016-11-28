@@ -2,7 +2,43 @@
   <h4 class='navbar'>
     <span ng-show='!dash.username'><a href="#/">Login</a></span>
     <span ng-show='dash.admin_status'><a href="#/admin">Admin</a></span>
-    <a href="#/profile">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a>
+    <a href="#/profile">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
   </h4>
+  <h1>Welcome {{dash.username}}</h1>
+  <h5>Last visit was: {{dash.last_visit | date: "MMM d, y h:mm a"}}</h5>
+  <div>
+    <h3>Forum</h3>
+    <input type="text" ng-model='search' placeholder="Search forums....">
+    <table>
+      <tr>
+        <th>Category</th><th>Topic</th><th>Description</th><th>Started By</th><th>Posts</th><th>Last Activity</th>
+      </tr>
+      <tr ng-show='dash.topics.length == 0'>
+        <td> - </td><td> - </td><td> - </td><td> - </td><td> - </td><td> - </td>
+      </tr>
+      <tr ng-repeat='topic in dash.topics | orderBy: orderOption | filter: search'>
+        <td><a href="#/category/topic.category">{{topic.category}}</a></td>
+        <td><a href="#/topic/topic._id">{{topic.topic}}</a></td>
+        <td>{{topic.description}}</td>
+        <td><a href="#/profile/topic.userId">{{topic.username}}</a></td>
+        <td>{{topic.posts.length}}</td>
+        <td>{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
+      </tr>
+    </table>
+    Sort by: <select ng-model='orderOption' ng-init="orderOption='date'">
+      <option value="date">Most Recent</option>
+      <option value="username">User</option>
+      <option value="category">Category</option>
+      <option value="topic">Topic</option>
+      <option value="posts">Posts</option>
+    </select>
+  </div>
+  <h3><a href="#/create">New Topic</a></h3>
+
+  <div>
+    <h2>Statistics:</h2>
+    <hr>
+    <h4>Total topics: {{dash.topics.length}} - members: {{dash.members.length}} - posts: {{dash.posts.length}} - comments: {{dash.comments.length}}</h4>
+  </div>
 </div>
