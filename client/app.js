@@ -12,7 +12,13 @@ $routeProvider
   .when('/dashboard', {
     templateUrl: 'partials/dashboard.html'
   })
-  .when('/profile', {
+  .when('/topic/:id', {
+    templateUrl: 'partials/topic.html'
+  })
+  .when('/category/:name', {
+    templateUrl: 'partials/category.html'
+  })
+  .when('/profile/:id', {
     templateUrl: 'partials/admin.html'
   })
   .when('/members', {
@@ -26,6 +32,12 @@ $routeProvider
   })
   .when('/admin', {
     templateUrl: 'partials/admin.html'
+  })
+  .when('/create', {
+    templateUrl: 'partials/create.html'
+  })
+  .when('/support', {
+    templateUrl: 'partials/support.html'
   })
   .otherwise('/')
 })
