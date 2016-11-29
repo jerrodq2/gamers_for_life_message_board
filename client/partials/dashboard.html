@@ -19,9 +19,9 @@
       </tr>
       <tr ng-repeat='topic in dash.topics | orderBy: orderOption | filter: search'>
         <td><a href="#/category/topic.category">{{topic.category}}</a></td>
-        <td><a href="#/topic/topic._id">{{topic.topic}}</a></td>
+        <td><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
         <td>{{topic.description}}</td>
-        <td><a href="#/profile/topic.userId">{{topic.username}}</a></td>
+        <td><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
         <td>{{topic.posts.length}}</td>
         <td>{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
       </tr>

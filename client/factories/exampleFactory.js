@@ -1,7 +1,6 @@
 
 app.factory('exampleFactory', ['$http', '$routeParams', '$location','$cookies', function(http, routeP, location, cookie){
-  var factory ={};
-
+  var factory ={}
 
   factory.logout = function(){
     cookie.remove('id')
@@ -10,6 +9,8 @@ app.factory('exampleFactory', ['$http', '$routeParams', '$location','$cookies', 
     cookie.remove('username')
     http.get('/logout')
   }
+
+  
   return factory;
 }])
 

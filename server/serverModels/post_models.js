@@ -75,6 +75,13 @@ var PostDislikeSchema = new Schema({
   }
 }, {timestamps: true})
 
+
+PostSchema.pre('remove', function(next){
+  this.model('Comment').remove({_post: this._id}).exec()
+  next()
+})
+
+
 mongoose.model('Post', PostSchema)
 mongoose.model('PostLike', PostLikeSchema)
 mongoose.model('PostDislike', PostDislikeSchema)
