@@ -9,11 +9,13 @@ app.factory('dashboardFactory', ['$http', '$routeParams', '$location','$cookies'
     cookie.remove('username')
     http.get('/logout')
   }
+
   factory.find = function(callback){
     http.get('/findAll').then(function(response){
       callback(response.data)
     })
   }
+
   factory.create = function(data, callback){
     if (angular.isUndefined(data)){
       return callback(false, 'Please fill out all fields')
@@ -31,6 +33,50 @@ app.factory('dashboardFactory', ['$http', '$routeParams', '$location','$cookies'
         callback(false, response.data.str)
       } else {
         callback(true)
+        location.url('/dashboard')
+      }
+    })
+  }
+
+  factory.findOne = function(callback){
+    http.get('/findTopic/'+routeP.id).then(function(response){
+      callback(response.data)
+    })
+  }
+
+  factory.createPost = function(t_id, data, callback){
+    if(angular.isUndefined(data) || data.post.length == 0){
+      return callback(false, "Post can't be blank")
+    }
+    data.t_id = t_id
+    http.post('/createPost', data).then(function(response){
+      if(!response.data.message){
+        callback(false, response.data.str)
+      } else {
+        callback(true)
+      }
+    })
+  }
+
+  factory.createComment = function(p_id, comment, callback){
+    if(angular.isUndefined(comment) || comment.length == 0){
+      return callback(false, "Comment can't be blank")
+    }
+    var data = {}
+    data.comment = comment
+    data.p_id = p_id
+    http.post('/createComment', data).then(function(response){
+      if(!response.data.message){
+        callback(false, response.data.str)
+      } else {
+        callback(true)
+      }
+    })
+  }
+
+  factory.topicDelete = function(t_id){
+    http.get('/delete/topic/'+t_id).then(function(response){
+      if(response.data.message){
         location.url('/dashboard')
       }
     })

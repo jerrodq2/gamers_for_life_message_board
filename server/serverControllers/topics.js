@@ -16,6 +16,11 @@ module.exports = {
       })
     })
   }, //END OF FINDALL********
+  findOne: function(req, res){
+    Topic.findOne({_id: req.params.id}).populate({path: 'posts', populate: {path: 'comments'}}).exec(function(err, topic){
+      res.json(topic)
+    })
+  },
   create: function(req, res){
     if(!req.session.user){ // then they aren't logged in
       return res.json({message: false, str: 'You must be logged in to create a new topic'})
@@ -40,6 +45,19 @@ module.exports = {
     })
   }, //END OF CREATE*************
 
+  delete: function(req, res){
+    Topic.findOne({_id: req.params.id}, function(err, topic){
+      if(req.session.user._id != topic.userId){
+        console.log('Not correct user Id');
+        res.json({message: false})
+      } else{
+        Topic.findOne({_id: req.params.id}, function(err, topic){
+          topic.remove() //I have to do findOne and then this because if I just use remove, my Schema.pre methods in my models don't activate. I have .pre methods to cascade delete both any related posts and comments
+          res.json({message: true})
+        })
+      }
+    })
+  },
 }
 
 

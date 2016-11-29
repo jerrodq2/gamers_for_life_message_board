@@ -1,8 +1,35 @@
-<div ng-controller>
+<div ng-controller='TopicController as tc'>
   <h4 class='navbar'>
-    <span ng-show='!dash.username'><a href="#/">Login</a></span>
-    <span ng-show='dash.admin_status'><a href="#/admin">Admin</a></span>
+    <span ng-show='!tc.username'><a href="#/">Login</a></span>
+    <span ng-show='tc.admin_status'><a href="#/admin">Admin</a></span>
     <a href="#/profile">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
-    <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
+    <span ng-show='tc.username'><a href="#/"ng-click='tc.logout()'>Logout</a></span>
   </h4>
+  <h1>{{tc.topic.topic}}</h1>
+  <h3>{{tc.topic.description}}</h3>
+  <p>Category: {{tc.topic.category}}, created at: {{tc.topic.createdAt | date: "MMM d, y h:mm a"}}, by <a href="#/profile/{{tc.topic.userId}}">{{tc.topic.username}}</a></p>
+  <p>Last Activity: {{tc.topic.updatedAt | date: "MMM d, y h:mm a"}} <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true"' ng-click='deleteTopic = true'>Delete</button></p>
+  <p ng-show='deleteTopic'>Are you sure? <button ng-click='tc.topicDelete(tc.topic._id)'>Yes</button> <button ng-click='deleteTopic = false'>No</button></p>
+  <hr>
+  {{tc.postFlash}}
+  <form>
+    <textarea ng-model='tc.newPost.post' rows="8" cols="80"></textarea>
+    <input type="submit" ng-click='tc.createPost(tc.topic._id)' value="Submit Post">
+  </form>
+  <div ng-repeat='post in tc.topic.posts'>
+    <h4><a href="#/profile/{{post.userId}}">{{post.username}}</a>:</h4>
+    <p>{{post.post}}</p>
+    <p>Posted on: {{post.createdAt | date: "MMM d, y h:mm a"}}</p>
+    <p>Likes: {{post.likes.length}}, Dislikes: {{post.dislikes.length}}</p>
+    <ul>
+      <li ng-repeat='comment in post.comments' ng-show='$index <= 2 || showComments == true'><a href="#/profile/{{comment.userId}}">{{comment.username}}</a>: {{comment.comment}} <p>Commented on: {{comment.createdAt| date: "MMM d, y h:mm a"}}</p></li>
+      <p ng-show='post.comments.length > 3 || showComments == false'><button ng-click='showComments = true'>See all comments</button></p>
+      <p ng-show='showComments == true'><button ng-click='showComments = false'>See fewer comments</button></p>
+    </ul>
+    <form>
+      <p ng-show='tc.commentFlash.id == post._id'>{{tc.commentFlash.str}}</p>
+      <input type="text" ng-model='comment'>
+      <input type="submit" ng-click='tc.createComment(post._id, comment); comment = "" ' value="Comment">
+    </form>
+  </div>
 </div>
