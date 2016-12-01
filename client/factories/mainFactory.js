@@ -11,7 +11,7 @@ app.factory('mainFactory', ['$http', '$routeParams', '$location','$cookies', fun
   }
 
   factory.find = function(callback){
-    http.get('/findAll').then(function(response){
+    http.get('/findAllTopics').then(function(response){
       callback(response.data)
     })
   }

@@ -25,7 +25,8 @@ module.exports = {
         }
       })
     })
-  },
+  }, //END OF REGISTER ******************
+
   login: function(req, res){
     User.findOne({username: req.body.username}, function(err, user){
       if(err){
@@ -37,9 +38,8 @@ module.exports = {
       } else {
         var check = user.validPassword(req.body.password)
         if(check){
-          console.log('good login')
           user.last_visit = new Date()//this is to update the last_visit key for the user
-          user.save(function(err){
+          User.update({_id: user._id}, {$set: {last_visit: user.last_visit}}, function(err){
             req.session.user = {username: user.username, _id: user._id, admin_status: user.admin_status}//create session with needed user info
             res.json({message: true, id: user._id, username: user.username, last_visit: user.last_visit, admin_status: user.admin_status })//send back userful info to be shown on partials or used in controller/factory, nothing that can be harmful, validations will be on the server side to double check any importatn data sent anyways
           })
@@ -50,10 +50,17 @@ module.exports = {
         }
       }
     })
-  },
+  }, //END OF REGISTER******************
+
   logout: function(req, res){
     req.session.destroy()
     res.json({message: true})
+  },
+
+  findAll: function(req, res){
+    User.find({}, function(err, users){
+      res.json(users)
+    })
   }
 
 

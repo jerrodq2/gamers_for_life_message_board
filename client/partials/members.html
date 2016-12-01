@@ -1,8 +1,32 @@
-<div ng-controller>
+<div ng-controller='membersController as mc'>
   <h4 class='navbar'>
-    <span ng-show='!dash.username'><a href="#/">Login</a></span>
-    <span ng-show='dash.admin_status'><a href="#/admin">Admin</a></span>
+    <span ng-show='!mc.username'><a href="#/">Login</a></span>
+    <span ng-show='mc.admin_status == true'><a href="#/admin">Admin</a></span>
     <a href="#/profile">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
-    <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
+    <span ng-show='mc.username'><a href="#/"ng-click='mc.logout()'>Logout</a></span>
   </h4>
+  <h1>All Members</h1>
+  <h4>Total Members: {{mc.members.length}}</h4>
+  Search Members <input type="text" ng-model='search' placeholder="search...">
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Fullname</th>
+      <th>Email</th>
+      <th>Member Since</th>
+      <th>Last Visit</th>
+    </tr>
+    <tr ng-show='mc.members.length == 0'>
+      <td> - </td><td> - </td><td> - </td><td> - </td><td> - </td>
+    </tr>
+    <tr ng-repeat='user in mc.members | filter: search | orderBy: order'>
+    <td><a href="#/profile/{{user._id}}">{{user.username}}</a></td>
+    <td ng-show='user.first_name'>{{user.first_name}} {{user.last_name}}</td>
+    <td ng-hide='user.first_name'> - </td>
+    <td ng-show='user.email'>{{user.email}}</td>
+    <td ng-hide='user.email'> - </td>
+    <td>{{user.createdAt | date: "MMM d, y h:mm a"}}</td>
+    <td>{{user.last_visit | date: "MMM d, y h:mm a"}}</td>
+  </tr>
+  </table>
 </div>
