@@ -10,8 +10,10 @@ module.exports = function(app){
   app.post('/register', Users.register)
   app.post('/login', Users.login)
   app.get('/logout', Users.logout)
+  //USER ROUTES**********************
+  app.get('/findAllMembers', Users.findAll)
   //TOPIC ROUTES*********************
-  app.get('/findAll', Topics.findAll)
+  app.get('/findAllTopics', Topics.findAll)
   app.get('/findTopic/:id', Topics.findOne)
   //CREATE ROUTES********************
   app.post('/createTopic', Topics.create)
