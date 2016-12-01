@@ -63,6 +63,32 @@ app.controller('TopicController', ['mainFactory', '$location', '$cookies', funct
     })
   }
 
+  this.likePost = function(p_id){
+    fact.likePost(p_id, function(message, str){
+      if(!message){
+        self.postLikeFlash = {str: str, id: p_id}
+      } else {
+        self.postLikeFlash = {str: '', id: p_id}
+        fact.findOne(function(data){
+          self.topic = data
+        })
+      }
+    })
+  }
+
+  this.likeComment = function(c_id){
+    fact.likeComment(c_id, function(message, str){
+      if(!message){
+        self.commentLikeFlash = {str: str, id: c_id}
+      } else {
+        self.commentLikeFlash = {str: '', id: c_id}
+        fact.findOne(function(data){
+          self.topic = data
+        })
+      }
+    })
+  }
+
 }])
 
 

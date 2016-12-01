@@ -1,12 +1,13 @@
 var mongoose = require('mongoose'),
     Comment = mongoose.model('Comment'),
     Post = mongoose.model('Post'),
-    Topic = mongoose.model('Topic')
+    Topic = mongoose.model('Topic'),
+    Like = mongoose.model('CommentLike')
 
 module.exports = {
   create: function(req, res){
     if(!req.session.user)
-      return res.json({message: false, str: 'You must be logged in to post'})
+      return res.json({message: false, str: 'You must be logged in to comment'})
     Post.findOne({_id: req.body.p_id}, function(err, post){
       if(err){
         return res.json({message: false, str: 'There was an error'})
@@ -45,9 +46,32 @@ module.exports = {
           comment.remove()
           res.json({message: true})
         }
-      })
+      }) //end of comment findOne
     })//end of topic findOne
-  },
+  }, // end of delete
+
+  like: function(req, res){
+    Comment.findOne({_id: req.params.id}, function(err, comment){
+      if(!req.session.user) //if they're not logged in, they shouldn't be able to like anything
+        return res.json({message: false, str: "You must be logged in to like this"})
+      Like.find({_comment: req.params.id}, function(err, likes){// I do this to make sure that the user hasn't already like this comment
+        for(var i = 0; i < likes.length; i++){
+          if(likes[i].userId == req.session.user._id)
+            return res.json({message: false, str: "You've already liked this comment"}) //end of if
+        } //end of for loop
+        var like = new Like()
+        like.userId = req.session.user._id
+        like.username = req.session.user.username
+        like._comment = comment._id
+        like.save(function(err){
+          comment.likes.push(like)
+          comment.save(function(err){
+            res.json({message: true})
+          }) //end of comment.save
+        }) //end of like.save
+      })// end of like find
+    }) //end of comment findOne
+  },// end of Like
 
 }
 

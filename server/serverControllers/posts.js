@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     Post = mongoose.model('Post'),
-    Topic = mongoose.model('Topic')
+    Topic = mongoose.model('Topic'),
+    Like = mongoose.model('PostLike')
 
 module.exports = {
   create: function(req, res){
@@ -42,7 +43,30 @@ module.exports = {
         }
       }) //End of Topic FindOne
     }) // end of Post FindOne
-  }
+  },
+
+  like: function(req, res){
+    Post.findOne({_id: req.params.id}, function(err, post){
+      if(!req.session.user) //if they're not logged in, they shouldn't be able to like anything
+        return res.json({message: false, str: "You must be logged in to like this"})
+      Like.find({_post: req.params.id}, function(err, likes){ // I do this to make sure that the user hasn't already like this post
+        for(var i = 0; i < likes.length; i++){
+          if(likes[i].userId == req.session.user._id)
+            return res.json({message: false, str: "You've already liked this post"}) //end of if
+        } //end of for loop
+        var like = new Like()
+        like.userId = req.session.user._id
+        like.username = req.session.user.username
+        like._post = post._id
+        like.save(function(err){
+          post.likes.push(like)
+          post.save(function(err){
+            res.json({message: true})
+          }) //end of post.save
+        }) //end of like.save
+      })// end of like find
+    })// end of post findOne
+  }, //end of Like
 
 }
 

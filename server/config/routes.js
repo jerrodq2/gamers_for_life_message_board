@@ -21,6 +21,9 @@ module.exports = function(app){
   app.get('/delete/topic/:id', Topics.delete)
   app.get('/delete/post/:id', Posts.delete)
   app.get('/delete/comment/:cid/:tid', Comments.delete)
+  //LIKE ROUTES**********************
+  app.get('/like/post/:id', Posts.like)
+  app.get('/like/comment/:id', Comments.like)
 }
 
 // *******************End*******************

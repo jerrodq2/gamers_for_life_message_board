@@ -96,6 +96,26 @@ app.factory('mainFactory', ['$http', '$routeParams', '$location','$cookies', fun
     })
   }
 
+  factory.likePost = function(p_id, callback){
+    http.get('/like/post/'+p_id).then(function(response){
+      if(!response.data.message){
+        callback(false, response.data.str)
+      } else{
+        callback(true)
+      }
+    })
+  }
+
+  factory.likeComment = function(c_id, callback){
+    http.get('/like/comment/'+c_id).then(function(response){
+      if(!response.data.message){
+        callback(false, response.data.str)
+      } else{
+        callback(true)
+      }
+    })
+  }
+
   return factory;
 }])
 
