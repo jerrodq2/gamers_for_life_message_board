@@ -19,11 +19,15 @@
   <div ng-repeat='post in tc.topic.posts'>
     <h4><a href="#/profile/{{post.userId}}">{{post.username}}</a>:</h4>
     <p>{{post.post}}</p>
-    <p>Posted on: {{post.createdAt | date: "MMM d, y h:mm a"}}</p>
-    <p>Likes: {{post.likes.length}}, Dislikes: {{post.dislikes.length}}</p>
+    <p>Posted on: {{post.createdAt | date: "MMM d, y h:mm a"}} <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || post.userId == tc.id' ng-click='deletePost = true'>Delete</button></p>
+    <p><a href="#">Like</a></p>
+    <p ng-show='deletePost'>Are you sure? <button ng-click='tc.postDelete(post._id)'>Yes</button> <button ng-click='deletePost = false'>No</button></p>
     <ul>
-      <li ng-repeat='comment in post.comments' ng-show='$index <= 2 || showComments == true'><a href="#/profile/{{comment.userId}}">{{comment.username}}</a>: {{comment.comment}} <p>Commented on: {{comment.createdAt| date: "MMM d, y h:mm a"}}</p></li>
-      <p ng-show='post.comments.length > 3 || showComments == false'><button ng-click='showComments = true'>See all comments</button></p>
+      <li ng-repeat='comment in post.comments' ng-show='$index <= 2 || showComments == true'><a href="#/profile/{{comment.userId}}">{{comment.username}}</a>: {{comment.comment}} <p>Commented on: {{comment.createdAt| date: "MMM d, y h:mm a"}} <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || comment.userId == tc.id' ng-click='deleteComment = true'>Delete</button></p>
+      <p ng-show='deleteComment'>Are you sure? <button ng-click='tc.commentDelete(comment._id, tc.topic._id)'>Yes</button> <button ng-click='deleteComment = false'>No</button></p>
+      <p><a href="#">Like</a></p>
+      </li>
+      <p ng-init='showComments = false' ng-show='post.comments.length > 3 && showComments == false'><button ng-click='showComments = true'>See all comments</button></p>
       <p ng-show='showComments == true'><button ng-click='showComments = false'>See fewer comments</button></p>
     </ul>
     <form>

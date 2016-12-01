@@ -33,7 +33,21 @@ module.exports = {
         }
       })
     })
-  }
+  }, // END OF CREATE ************
+
+  delete: function(req, res){
+    Topic.findOne({_id: req.params.tid}, function(err, topic){
+      Comment.findOne({_id: req.params.cid}, function(err, comment){
+        if(req.session.user._id != comment.userId && !req.session.user.admin_status && req.session.user._id != topic.userId){ // if this doesn't pass then the user is either the person who created the comment, the topic that the comment is related to, or the user is an admin, in any of the three cases, they can delete the comment
+          console.log('Not correct user Id')
+          res.json({message: false})
+        } else{
+          comment.remove()
+          res.json({message: true})
+        }
+      })
+    })//end of topic findOne
+  },
 
 }
 
