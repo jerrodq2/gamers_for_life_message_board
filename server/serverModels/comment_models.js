@@ -31,10 +31,6 @@ var CommentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'CommentLike',
   }],
-  dislikes:[{
-    type: Schema.Types.ObjectId,
-    ref: 'CommentDislike',
-  }],
 }, {timestamps: true})
 
 var CommentLikeSchema = new Schema({
@@ -54,26 +50,9 @@ var CommentLikeSchema = new Schema({
   }
 }, {timestamps: true})
 
-var CommentDislikeSchema = new Schema({
-  _comment:{
-    type: Schema.Types.ObjectId,
-    ref: 'Comment',
-    required: true,
-  },
-  userId:{
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  username:{
-    type: String,
-    required: true,
-  }
-}, {timestamps: true})
 
 mongoose.model('Comment', CommentSchema)
 mongoose.model('CommentLike', CommentLikeSchema)
-mongoose.model('CommentDislike', CommentDislikeSchema)
 
 
 // *******************End*******************

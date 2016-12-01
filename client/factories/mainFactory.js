@@ -1,5 +1,5 @@
 
-app.factory('dashboardFactory', ['$http', '$routeParams', '$location','$cookies', function(http, routeP, location, cookie){
+app.factory('mainFactory', ['$http', '$routeParams', '$location','$cookies', function(http, routeP, location, cookie){
   var factory ={};
 
   factory.logout = function(){
@@ -79,6 +79,20 @@ app.factory('dashboardFactory', ['$http', '$routeParams', '$location','$cookies'
       if(response.data.message){
         location.url('/dashboard')
       }
+    })
+  }
+
+  factory.postDelete = function(p_id, callback){
+    http.get('/delete/post/'+p_id).then(function(response){
+      if(response.data.message)
+        callback()
+    })
+  }
+
+  factory.commentDelete = function(c_id, t_id, callback){
+    http.get('/delete/comment/'+c_id+'/'+t_id).then(function(response){
+      if(response.data.message)
+        callback()
     })
   }
 

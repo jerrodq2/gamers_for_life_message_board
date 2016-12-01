@@ -19,7 +19,8 @@ module.exports = function(app){
   app.post('/createComment', Comments.create)
   //DELETE ROUTES********************
   app.get('/delete/topic/:id', Topics.delete)
-
+  app.get('/delete/post/:id', Posts.delete)
+  app.get('/delete/comment/:cid/:tid', Comments.delete)
 }
 
 // *******************End*******************

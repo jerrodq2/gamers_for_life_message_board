@@ -1,4 +1,4 @@
-app.controller('TopicController', ['dashboardFactory', '$location', '$cookies', function(fact, location, cookie){
+app.controller('TopicController', ['mainFactory', '$location', '$cookies', function(fact, location, cookie){
   var self = this
   this.topic = {}
 
@@ -47,8 +47,23 @@ app.controller('TopicController', ['dashboardFactory', '$location', '$cookies', 
     fact.topicDelete(t_id)
   }
 
-}])
+  this.postDelete = function(p_id){
+    fact.postDelete(p_id, function(){
+      fact.findOne(function(data){ // I call this method again to refresh the topic and all it's data for the page, otherwise the deleted item would show until the user refreshed the page
+        self.topic = data
+      })
+    })
+  }
 
+  this.commentDelete = function(c_id, t_id){
+    fact.commentDelete(c_id, t_id, function(){
+      fact.findOne(function(data){// I call this method again to refresh the topic and all it's data for the page, otherwise the deleted item would show until the user refreshed the page
+        self.topic = data
+      })
+    })
+  }
+
+}])
 
 
 // *******************End*******************

@@ -47,14 +47,12 @@ module.exports = {
 
   delete: function(req, res){
     Topic.findOne({_id: req.params.id}, function(err, topic){
-      if(req.session.user._id != topic.userId){
+      if(req.session.user._id != topic.userId && !req.session.user.admin_status){ //if this doesn't pass then the user either created the topic or is an admin and can delete it. If this does pass then the user probably manipulated the client side and is trying to delete a topic they didn't create and they're not an admin
         console.log('Not correct user Id');
         res.json({message: false})
       } else{
-        Topic.findOne({_id: req.params.id}, function(err, topic){
-          topic.remove() //I have to do findOne and then this because if I just use remove, my Schema.pre methods in my models don't activate. I have .pre methods to cascade delete both any related posts and comments
-          res.json({message: true})
-        })
+        topic.remove() //I have to do findOne and then this because if I just use remove, my Schema.pre methods in my models don't activate. I have .pre methods to cascade delete both any related posts and comments
+        res.json({message: true})
       }
     })
   },
