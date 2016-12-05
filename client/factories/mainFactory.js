@@ -44,6 +44,12 @@ app.factory('mainFactory', ['$http', '$routeParams', '$location','$cookies', fun
     })
   }
 
+  factory.findCategory = function(callback){
+    http.get('/findCategory/'+routeP.name).then(function(response){
+      callback(response.data, routeP.name)
+    })
+  }
+
   factory.createPost = function(t_id, data, callback){
     if(angular.isUndefined(data) || data.post.length == 0){
       return callback(false, "Post can't be blank")

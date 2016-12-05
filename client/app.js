@@ -19,7 +19,10 @@ $routeProvider
     templateUrl: 'partials/category.html'
   })
   .when('/profile/:id', {
-    templateUrl: 'partials/admin.html'
+    templateUrl: 'partials/profile.html'
+  })
+  .when('/profile/edit/:id', {
+    templateUrl: 'partials/editProfile.html'
   })
   .when('/members', {
     templateUrl: 'partials/members.html'

@@ -1,8 +1,52 @@
-<div ng-controller>
+<div ng-controller='categoryController as cc'>
   <h4 class='navbar'>
-    <span ng-show='!dash.username'><a href="#/">Login</a></span>
-    <span ng-show='dash.admin_status'><a href="#/admin">Admin</a></span>
-    <a href="#/profile">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
-    <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
+    <span ng-show='!cc.username'><a href="#/">Login</a></span>
+    <span ng-show='cc.admin_status == true'><a href="#/admin">Admin</a></span>
+    <a ng-show='cc.username' href="#/profile/{{cc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
+    <span ng-show='cc.username'><a href="#/"ng-click='cc.logout()'>Logout</a></span>
   </h4>
+  <h1>Topics under the Category {{cc.category}}</h1>
+  <input type="text" ng-model='search' placeholder="Search forums....">
+  <table>
+    <tr>
+      <th>Topic</th><th>Description</th><th>Started By</th><th>Posts</th><th>Last Activity</th>
+    </tr>
+    <tr ng-show='cc.topics.length == 0'>
+      <td> - </td><td> - </td><td> - </td><td> - </td><td> - </td>
+    </tr>
+    <tr ng-repeat='topic in cc.topics | filter: search | orderBy: orderOption: reverseOption'>
+      <td><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
+      <td>{{topic.description}}</td>
+      <td><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
+      <td>{{topic.posts.length}}</td>
+      <td>{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
+    </tr>
+  </table>
+  Sort by: <select ng-model='orderOption' ng-init="orderOption='date'">
+    <option value="date">Most Recent</option>
+    <option value="username">User</option>
+    <option value="topic">Topic</option>
+    <option value="posts">Posts</option>
+  </select>
+  <select ng-model='reverseOption' ng-init="reverseOption=''">
+    <option value="">Ascending</option>
+    <option value="true">Descending</option>
+  </select>
+  <h3>Search for other categories
+    <select ng-model='category'>
+      <option value="Consoles">Consoles</option>
+      <option value="Retro Gaming">Retro Gaming</option>
+      <option value="News">News</option>
+      <option value="Upcoming Games/Tech">Upcoming Games/Tech</option>
+      <option value="Specific Series">Specific Series</option>
+      <option value="Specific Game">Specific Game</option>
+      <option value="PC">PC</option>
+      <option value="Indie">Indie</option>
+      <option value="Handheld">Handheld</option>
+      <option value="Collecting">Collecting</option>
+      <option value="Conventions/Events">Conventions/Events</option>
+      <option value="Other">Other</option>
+    </select>
+    <a href="#/category/{{category}}">Search</a>
+  </h3>
 </div>

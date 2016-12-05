@@ -16,6 +16,34 @@ app.factory('userFactory', ['$http', '$routeParams', '$location','$cookies', fun
     })
   }
 
+  factory.findOne = function(callback){
+    http.get('/findUser/'+routeP.id).then(function(response){
+      callback(response.data)
+    })
+  }
+
+  factory.edit = function(id, data, callback){
+    http.post('/edit/user/'+id, data).then(function(response){
+      if(!response.data.message){
+        callback(false, response.data.str)
+      } else{
+        callback(true)
+        location.url('/profile/'+id)
+      }
+    })
+  }
+
+  factory.changePass = function(id, data, callback){
+    http.post('/edit/pass/'+id, data).then(function(response){
+      if(!response.data.message){
+        callback(false, response.data.str)
+      } else{
+        callback(true)
+        location.url('/profile/'+id)
+      }
+    })
+  }
+
   return factory;
 }])
 

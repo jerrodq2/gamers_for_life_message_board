@@ -12,9 +12,13 @@ module.exports = function(app){
   app.get('/logout', Users.logout)
   //USER ROUTES**********************
   app.get('/findAllMembers', Users.findAll)
+  app.get('/findUser/:id', Users.findOne)
+  app.post('/edit/user/:id', Users.edit)
+  app.post('/edit/pass/:id', Users.editPass)
   //TOPIC ROUTES*********************
   app.get('/findAllTopics', Topics.findAll)
   app.get('/findTopic/:id', Topics.findOne)
+  app.get('/findCategory/:name', Topics.findCategory)
   //CREATE ROUTES********************
   app.post('/createTopic', Topics.create)
   app.post('/createPost', Posts.create)

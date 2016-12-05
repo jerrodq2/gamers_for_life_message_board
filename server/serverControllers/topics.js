@@ -16,11 +16,19 @@ module.exports = {
       })
     })
   }, //END OF FINDALL********
+
   findOne: function(req, res){
     Topic.findOne({_id: req.params.id}).populate({path: 'posts', populate: {path: 'comments'}}).exec(function(err, topic){
       res.json(topic)
     })
   },
+
+  findCategory: function(req, res){
+    Topic.find({category: req.params.name}).populate('posts').exec( function(err, topics){
+      res.json(topics)
+    })
+  },
+
   create: function(req, res){
     if(!req.session.user){ // then they aren't logged in
       return res.json({message: false, str: 'You must be logged in to create a new topic'})
@@ -56,6 +64,7 @@ module.exports = {
       }
     })
   },
+
 }
 
 

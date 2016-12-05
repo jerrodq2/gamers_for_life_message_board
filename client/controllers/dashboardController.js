@@ -7,6 +7,7 @@ app.controller('dashboardController', ['mainFactory', '$location', '$cookies', f
   this.comments = []
 
   if(cookie.get('username')){ //if this passes then the user is logged in and the rest of these were created
+    this.id = cookie.get('id')
     this.username = cookie.get('username')
     this.admin_status = cookie.get('admin_status')
     this.last_visit = cookie.get('last_visit')
