@@ -1,0 +1,36 @@
+<div ng-controller='profileController as pc'>
+  <h4 class='navbar'>
+    <span ng-show='!pc.username'><a href="#/">Login</a></span>
+    <span ng-show='pc.admin_status == true'><a href="#/admin">Admin</a></span>
+    <a ng-show='pc.username' href="#/profile/{{pc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
+    <span ng-show='pc.username'><a href="#/"ng-click='pc.logout()'>Logout</a></span>
+  </h4>
+  <hr>
+  <h3>Change Basic Info</h3>
+  <div ng-repeat='user in pc.editUser'>
+    {{pc.editFlash}}
+    <form>
+      First Name: <input type="text" ng-model='pc.editInfo.first_name'
+      ng-init="pc.editInfo.first_name=user.first_name ">
+      Last Name: <input type="text" ng-model='pc.editInfo.last_name' ng-init="pc.editInfo.last_name=user.last_name">
+      Age: <input type="number" ng-model='pc.editInfo.age' ng-init="pc.editInfo.age=user.age">
+      Biography: <textarea ng-model='pc.editInfo.bio' ng-init='pc.editInfo.bio=user.bio' rows="8" cols="80"></textarea>
+      Hobbies: <input type="text" ng-model='pc.editInfo.hobbies' ng-init='pc.editInfo.hobbies=user.hobbies'>
+      Favorite Game: <input type="text" ng-model='pc.editInfo.fav_game' ng-init='pc.editInfo.fav_game=user.fav_game'>
+      <input type="submit" ng-click='pc.edit(user._id)' value="Submit">
+    </form>
+  </div>
+  <div ng-repeat='user in pc.editUser'>
+    <h3>Change Username or password</h3>
+    {{pc.changePassFlash}}
+    <form>
+      Username: <input type="text" ng-model='pc.passChange.username' ng-init='pc.passChange.username=user.username'>
+      Old Password: <input type="password" ng-model='pc.passChange.checkPass'>
+      New Password: <input type="password" ng-model='pc.passChange.password'>
+      <input type="submit" ng-click='confirm = true' value='Submit'>
+      <p ng-show='confirm'><button ng-click='pc.changePass(user._id)'>Confirm</button><button ng-click='confirm = false'>Cancel</button></p>
+    </form>
+  </div>
+  <a href="#/profile/{{pc.user._id}}">Cancel</a>
+
+</div>
