@@ -33,7 +33,7 @@ module.exports = {
     if(!req.session.user){ // then they aren't logged in
       return res.json({message: false, str: 'You must be logged in to create a new topic'})
     }
-    var categories = ['Consoles', 'Retro Gaming', 'News', 'Upcoming Games/Tech', 'Specific Series', 'Specific Game', 'PC', 'Indie', 'Handheld', 'Collecting', 'Conventions/Events', 'Other']
+    var categories = ['Consoles', 'Retro Gaming', 'News', 'Upcoming Games/Tech', 'Specific Series', 'Specific Game', 'PC', 'Indie', 'Handheld', 'Collecting', 'Conventions and Events', 'Other']
     var check = categories.includes(req.body.category)
     if(!check){ //A simple check to make sure that they entered a pre-determined category, wouldn't cause any serious damage and could be deleted, but better to stop small-scale tampering like that before it happens.
       return res.json({message: false, str: 'That category is not in the database'})

@@ -44,11 +44,6 @@ var UserSchema = new mongoose.Schema({
    type: Boolean,
    required: true,
  },
- friends:[{
-   type: mongoose.Schema.Types.ObjectId,
-   ref: 'Friend',
- }],
-
 
 }, {timestamps: true})
 

@@ -1,8 +1,22 @@
-<div ng-controller>
+<div ng-controller='admin_supportController as asc'>
   <h4 class='navbar'>
-    <span ng-show='!dash.username'><a href="#/">Login</a></span>
-    <span ng-show='mc.admin_status == true'><a href="#/admin">Admin</a></span>
-    <a ng-show='dash.username' href="#/profile/{{dash.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
-    <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
+    <span ng-show='!asc.username'><a href="#/">Login</a></span>
+    <span ng-show='asc.admin_status == true'><a href="#/admin">Admin</a></span>
+    <a ng-show='asc.username' href="#/profile/{{dash.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
+    <span ng-show='asc.username'><a href="#/"ng-click='asc.logout()'>Logout</a></span>
   </h4>
+  <h1>Support/Feedback</h1>
+  <p>If you've experienced an issue with the website or its functions, please select User Support under Type. If you'd like to submit any feedback or suggested improvements/additions to the site, please select Feedback. If you would like to be contacted about the matter, please include your name and email</p>
+  {{asc.flash}}
+  <form>
+    Name (optional) <input type="text" ng-model='asc.newSupport.user_name'>
+    Email (optional) <input type="email" ng-model='asc.newSupport.email'>
+    Subject <input type="text" ng-model='asc.newSupport.subject'>
+    Type: <select ng-model='asc.newSupport.type' ng-init='asc.newSupport.type="support"'>
+      <option value="support">User Support</option>
+      <option value="feedback">Feedback</option>
+    </select>
+    Description <textarea ng-model='asc.newSupport.description' rows="8" cols="80"></textarea>
+    <input type="submit" ng-click='asc.submit()' value="Submit Form">
+  </form>
 </div>

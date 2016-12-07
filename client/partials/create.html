@@ -2,7 +2,7 @@
   <h4 class='navbar'>
     <span ng-show='!dash.username'><a href="#/">Login</a></span>
     <span ng-show='mc.admin_status == true'><a href="#/admin">Admin</a></span>
-    <a ng-show='dash.username' href="#/profile/{{dash.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/faq">Faq</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
+    <a ng-show='dash.username' href="#/profile/{{dash.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
   </h4>
   <h1>New Topic</h1>
@@ -20,7 +20,7 @@
       <option value="Indie">Indie</option>
       <option value="Handheld">Handheld</option>
       <option value="Collecting">Collecting</option>
-      <option value="Conventions/Events">Conventions/Events</option>
+      <option value="Conventions and Events">Conventions and Events</option>
       <option value="Other">Other</option>
     </select>
     Description: <textarea ng-model='dash.newTopic.description' rows="8" cols="80"></textarea>

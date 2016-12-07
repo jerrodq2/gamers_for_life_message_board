@@ -4,6 +4,7 @@ var Users = require('../serverControllers/users.js')
 var Topics = require('../serverControllers/topics.js')
 var Posts = require('../serverControllers/posts.js')
 var Comments = require('../serverControllers/comments.js')
+var Admins = require('../serverControllers/admins.js')
 
 module.exports = function(app){
   //LOGIN/REGISTER ROUTES************
@@ -23,6 +24,7 @@ module.exports = function(app){
   app.post('/createTopic', Topics.create)
   app.post('/createPost', Posts.create)
   app.post('/createComment', Comments.create)
+  app.post('/createSupport', Admins.create)
   //DELETE ROUTES********************
   app.get('/delete/topic/:id', Topics.delete)
   app.get('/delete/post/:id', Posts.delete)
@@ -30,6 +32,7 @@ module.exports = function(app){
   //LIKE ROUTES**********************
   app.get('/like/post/:id', Posts.like)
   app.get('/like/comment/:id', Comments.like)
+  //ADMIN ROUTES*********************
 }
 
 // *******************End*******************
