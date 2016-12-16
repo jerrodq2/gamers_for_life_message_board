@@ -32,6 +32,36 @@ app.factory('admin_supportFactory', ['$http', '$routeParams', '$location','$cook
     })
   }
 
+  factory.supports = function(callback){
+    http.get('/findSupports').then(function(response){
+      callback(response.data)
+    })
+  }
+  factory.feedbacks = function(callback){
+    http.get('/findFeedbacks').then(function(response){
+      callback(response.data)
+    })
+  }
+
+  factory.resolve = function(id, callback){
+    http.get('/resolve/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      } else {
+        callback(false)
+      }
+    })
+  }
+  factory.delete = function(id, callback){
+    http.get('/delete/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      } else {
+        callback(false)
+      }
+    })
+  }
+
   return factory;
 }])
 

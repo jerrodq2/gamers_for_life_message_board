@@ -1,8 +1,60 @@
-<div ng-controller>
+<div ng-controller= 'admin_supportController as asc'>
   <h4 class='navbar'>
-    <span ng-show='!dash.username'><a href="#/">Login</a></span>
-    <span ng-show='mc.admin_status == "true"'><a href="#/admin">Admin</a></span>
-    <a ng-show='dash.username' href="#/profile/{{dash.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
-    <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
+    <span ng-show='!asc.username'><a href="#/">Login</a></span>
+    <span ng-show='asc.admin_status == "true"'><a href="#/admin">Admin</a></span>
+    <a ng-show='asc.username' href="#/profile/{{asc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
+    <span ng-show='asc.username'><a href="#/"ng-click='asc.logout()'>Logout</a></span>
   </h4>
+  <h1>Admin</h1>
+  <div class="">
+    <h3>Support</h3>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Subject</td>
+        <td>Description</td>
+        <td>Actions</td>
+      </tr>
+      <tr ng-show='asc.supports.length == 0'>
+        <td> - </td><td> - </td><td> - </td><td> - </td><td> - </td>
+      </tr>
+      <tr ng-repeat='support in asc.supports'>
+        <td ng-show='support.user_name'>{{support.user_name}}</td>
+        <td ng-show='!support.user_name'> - </td>
+        <td ng-show='support.user_email'>{{support.user_email}}</td>
+        <td ng-show='!support.user_email'> - </td>
+        <td>{{support.subject}}</td>
+        <td>{{support.description}}</td>
+        <td><button ng-click='asc.support_resolve(support._id)'>Change Status</button> | <button ng-click='asc.support_delete(support._id)'>Delete</button></td>
+      </tr>
+    </table>
+  </div>
+  <div class="">
+    <h3>Feedback</h3>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Subject</td>
+        <td>Description</td>
+        <td>Actions</td>
+      </tr>
+      <tr ng-show='asc.feedbacks.length == 0'>
+        <td> - </td><td> - </td><td> - </td><td> - </td><td> - </td>
+      </tr>
+      <tr ng-repeat='feedback in asc.feedbacks'>
+        <td ng-show='feedback.user_name'>{{feedback.user_name}}</td>
+        <td ng-show='!feedback.user_name'> - </td>
+        <td ng-show='feedback.user_email'>{{feedback.user_email}}</td>
+        <td ng-show='!feedback.user_email'> - </td>
+        <td>{{feedback.subject}}</td>
+        <td>{{feedback.description}}</td>
+        <td><button ng-click='asc.feedback_resolve(feedback._id)'>Change Status</button> | <button ng-click='asc.feedback_delete(feedback._id)'>Delete</button></td>
+      </tr>
+    </table>
+  </div>
+  <hr>
+  <h3>Flagged Items</h3>
+  
 </div>
