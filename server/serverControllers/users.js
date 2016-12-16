@@ -95,7 +95,7 @@ module.exports = {
     })
   },// END OF EDIT****************
 
-  editPass: function(req, res){
+  editPass: function(req, res){//This is for editing username or password, more critical info
     if(!req.body.checkPass)
       return res.json({message: false, str:'You must enter old password'})
     if(req.body.admin_status)
@@ -111,11 +111,14 @@ module.exports = {
         if(err){
           res.json({message: false, str:"That username already exists in the database"})
         } else {
-          res.json({message: true})
-        }
-      })
-    })
-  },
+          User.findOne({_id: req.params.id}, function(err, user){ //This last findOne is to update both the cookie and session of username incase they changed it
+            req.session.user.username = user.username
+            res.json({message: true, username: req.session.user.username})
+          }) //end of findOne
+        } //end of else
+      }) // end of Update
+    })// End of inital find One
+  }, // END OF EDITPASS **********************
 
 }
 

@@ -1,8 +1,8 @@
 <div ng-controller='admin_supportController as asc'>
   <h4 class='navbar'>
     <span ng-show='!asc.username'><a href="#/">Login</a></span>
-    <span ng-show='asc.admin_status == true'><a href="#/admin">Admin</a></span>
-    <a ng-show='asc.username' href="#/profile/{{dash.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
+    <span ng-show='asc.admin_status == "true"'><a href="#/admin">Admin</a></span>
+    <a ng-show='asc.username' href="#/profile/{{asc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='asc.username'><a href="#/"ng-click='asc.logout()'>Logout</a></span>
   </h4>
   <h1>Support/Feedback</h1>

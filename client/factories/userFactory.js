@@ -38,6 +38,7 @@ app.factory('userFactory', ['$http', '$routeParams', '$location','$cookies', fun
       if(!response.data.message){
         callback(false, response.data.str)
       } else{
+        cookie.put('username', response.data.username)
         callback(true)
         location.url('/profile/'+id)
       }
