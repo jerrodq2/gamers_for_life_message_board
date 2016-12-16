@@ -33,6 +33,10 @@ module.exports = function(app){
   app.get('/like/post/:id', Posts.like)
   app.get('/like/comment/:id', Comments.like)
   //ADMIN ROUTES*********************
+  app.get('/findSupports', Admins.supports)
+  app.get('/findFeedbacks', Admins.feedbacks)
+  app.get('/resolve/:id', Admins.resolve)
+  app.get('/delete/:id', Admins.delete)
 }
 
 // *******************End*******************
