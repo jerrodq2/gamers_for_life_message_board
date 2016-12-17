@@ -65,6 +65,14 @@ module.exports = {
     })
   },
 
+  flag: function(req, res){
+    if(!req.session.user)
+      return res.json({message: false, str: 'You must be logged in to flag a topic'})
+    Topic.update({_id: req.params.id}, {$set: {adminFlag: true}}, function(err){
+      res.json({message: true})
+    })
+  }
+
 }
 
 

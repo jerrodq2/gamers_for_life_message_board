@@ -2,6 +2,9 @@ app.controller('admin_supportController', ['admin_supportFactory', '$location', 
   var self = this
   this.supports = []
   this.feedbacks = []
+  this.topics = []
+  this.posts = []
+  this.comments = []
 
   if(cookie.get('username')){ //if this passes then the user is logged in and the rest of these were created, these are variables I expect to use semi-frequently
     this.id = cookie.get('id')
@@ -34,6 +37,11 @@ app.controller('admin_supportController', ['admin_supportFactory', '$location', 
   })
   fact.feedbacks(function(data){
     self.feedbacks = data
+  })
+  fact.flags(function(data){
+    self.topics = data.topics
+    self.posts = data.posts
+    self.comments = data.comments
   })
 
   this.support_resolve = function(id){
@@ -71,6 +79,78 @@ app.controller('admin_supportController', ['admin_supportFactory', '$location', 
       if(message){
         fact.feedbacks(function(data){
           self.feedbacks = data
+        })
+      }
+    })
+  }
+
+  this.deleteTopicFlag = function(id){
+    fact.deleteTopicFlag(id, function(message){
+      if(message){
+        fact.flags(function(data){
+          self.topics = data.topics
+          self.posts = data.posts
+          self.comments = data.comments
+        })
+      }
+    })
+  }
+
+  this.deletePostFlag = function(id){
+    fact.deletePostFlag(id, function(message){
+      if(message){
+        fact.flags(function(data){
+          self.topics = data.topics
+          self.posts = data.posts
+          self.comments = data.comments
+        })
+      }
+    })
+  }
+
+  this.deleteCommentFlag = function(id){
+    fact.deleteCommentFlag(id, function(message){
+      if(message){
+        fact.flags(function(data){
+          self.topics = data.topics
+          self.posts = data.posts
+          self.comments = data.comments
+        })
+      }
+    })
+  }
+
+  this.deleteTopic = function(id){
+    fact.deleteTopic(id, function(message){
+      if(message){
+        fact.flags(function(data){
+          self.topics = data.topics
+          self.posts = data.posts
+          self.comments = data.comments
+        })
+      }
+    })
+  }
+
+  this.deletePost = function(id){
+    fact.deletePost(id, function(message){
+      if(message){
+        fact.flags(function(data){
+          self.topics = data.topics
+          self.posts = data.posts
+          self.comments = data.comments
+        })
+      }
+    })
+  }
+
+  this.deleteComment = function(id){
+    fact.deleteComment(id, function(message){
+      if(message){
+        fact.flags(function(data){
+          self.topics = data.topics
+          self.posts = data.posts
+          self.comments = data.comments
         })
       }
     })

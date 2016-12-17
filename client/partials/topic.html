@@ -8,7 +8,12 @@
   <h1>{{tc.topic.topic}}</h1>
   <h3>{{tc.topic.description}}</h3>
   <p>Category: {{tc.topic.category}}, created at: {{tc.topic.createdAt | date: "MMM d, y h:mm a"}}, by <a href="#/profile/{{tc.topic.userId}}">{{tc.topic.username}}</a></p>
-  <p>Last Activity: {{tc.topic.updatedAt | date: "MMM d, y h:mm a"}} <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true"' ng-click='deleteTopic = true'>Delete</button></p>
+  <p>
+    Last Activity: {{tc.topic.updatedAt | date: "MMM d, y h:mm a"}}
+    <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true"' ng-click='deleteTopic = true'>Delete</button>
+    <a ng-show='tc.topic.adminFlag == false' ng-click='tc.topic_flag()'><img src="../static/images/false_flag.png" alt="white_flag"></a>
+    <img ng-show='tc.topic.adminFlag == true' src="../static/images/true_flag.png" alt="black_flag">{{tc.topic_flash}}
+  </p>
   <p ng-show='deleteTopic'>Are you sure? <button ng-click='tc.topicDelete(tc.topic._id)'>Yes</button> <button ng-click='deleteTopic = false'>No</button></p>
   <hr>
   {{tc.postFlash}}
@@ -19,12 +24,22 @@
   <div ng-repeat='post in tc.topic.posts'>
     <h4><a href="#/profile/{{post.userId}}">{{post.username}}</a>:</h4>
     <p>{{post.post}}</p>
-    <p>Posted on: {{post.createdAt | date: "MMM d, y h:mm a"}} <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || post.userId == tc.id' ng-click='deletePost = true'>Delete</button></p>
+    <p>Posted on: {{post.createdAt | date: "MMM d, y h:mm a"}}
+      <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || post.userId == tc.id' ng-click='deletePost = true'>Delete</button>
+      <a ng-show='post.adminFlag == false' ng-click='tc.post_flag(post._id)'><img src="../static/images/false_flag.png" alt="white_flag"></a>
+      <img ng-show='post.adminFlag == true' src="../static/images/true_flag.png" alt="black_flag">
+      <span ng-show='tc.postFlagFlash.id == post._id'>{{tc.postFlagFlash.str}}</span>
+    </p>
     <p><button ng-click='tc.likePost(post._id)'>Like</button> <span ng-show='post.likes.length > 0'>Likes: {{post.likes.length}}</span></p>
     <p ng-show='tc.postLikeFlash.id == post._id'>{{tc.postLikeFlash.str}}</p>
     <p ng-show='deletePost'>Are you sure? <button ng-click='tc.postDelete(post._id)'>Yes</button> <button ng-click='deletePost = false'>No</button></p>
     <ul>
-      <li ng-repeat='comment in post.comments' ng-show='$index <= 2 || showComments == true'><a href="#/profile/{{comment.userId}}">{{comment.username}}</a>: {{comment.comment}} <p>Commented on: {{comment.createdAt| date: "MMM d, y h:mm a"}} <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || comment.userId == tc.id' ng-click='deleteComment = true'>Delete</button></p>
+      <li ng-repeat='comment in post.comments' ng-show='$index <= 2 || showComments == true'><a href="#/profile/{{comment.userId}}">{{comment.username}}</a>: {{comment.comment}} <p>Commented on: {{comment.createdAt| date: "MMM d, y h:mm a"}}
+        <button ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || comment.userId == tc.id' ng-click='deleteComment = true'>Delete</button>
+        <a ng-show='comment.adminFlag == false' ng-click='tc.comment_flag(comment._id)'><img src="../static/images/false_flag.png" alt="white_flag"></a>
+        <img ng-show='comment.adminFlag == true' src="../static/images/true_flag.png" alt="black_flag">
+        <span ng-show='tc.commentFlagFlash.id == comment._id'>{{tc.commentFlagFlash.str}}</span>
+      </p>
       <p ng-show='deleteComment'>Are you sure? <button ng-click='tc.commentDelete(comment._id, tc.topic._id)'>Yes</button> <button ng-click='deleteComment = false'>No</button></p>
       <p><button ng-click='tc.likeComment(comment._id)'>Like</button> <span ng-show='comment.likes.length > 0'>Likes: {{comment.likes.length}}</span></p>
       <p ng-show='tc.commentLikeFlash.id == comment._id'>{{tc.commentLikeFlash.str}}</p>

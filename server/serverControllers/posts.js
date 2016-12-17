@@ -68,6 +68,16 @@ module.exports = {
     })// end of post findOne
   }, //end of Like
 
+
+  flag: function(req, res){
+    if(!req.session.user)
+      return res.json({message: false, str: 'You must be logged in to flag a post'})
+    Post.update({_id: req.params.id}, {$set: {adminFlag: true}}, function(err){
+      res.json({message: true})
+    })
+  },
+
+
 }
 
 

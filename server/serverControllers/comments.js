@@ -50,6 +50,17 @@ module.exports = {
     })//end of topic findOne
   }, // end of delete
 
+  adminDelete: function(req, res){
+    if(!req.session.user.admin_status)
+      return res.json({message: false})
+    Comment.remove({_id: req.params.id}, function(err){
+      if(err){
+        return res.json({message: false})
+      }
+      res.json({message: true})
+    })
+  },
+
   like: function(req, res){
     Comment.findOne({_id: req.params.id}, function(err, comment){
       if(!req.session.user) //if they're not logged in, they shouldn't be able to like anything
@@ -72,6 +83,14 @@ module.exports = {
       })// end of like find
     }) //end of comment findOne
   },// end of Like
+
+  flag: function(req, res){
+    if(!req.session.user)
+      return res.json({message: false, str: 'You must be logged in to flag a comment'})
+    Comment.update({_id: req.params.id}, {$set: {adminFlag: true}}, function(err){
+      res.json({message: true})
+    })
+  }
 
 }
 
