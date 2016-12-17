@@ -88,6 +88,40 @@ app.controller('TopicController', ['mainFactory', '$location', '$cookies', funct
       }
     })
   }
+  this.topic_flag = function(){
+    fact.topic_flag(function(message, str){
+      if(!message){
+        self.topic_flash = str
+      } else{
+        fact.findOne(function(data){
+          self.topic = data
+        })
+      }
+    })
+  }
+  this.post_flag = function(id){
+    fact.post_flag(id, function(message, str){
+      if(!message){
+        self.postFlagFlash = {str: str, id: id}
+      } else{
+        fact.findOne(function(data){
+          self.topic = data
+        })
+      }
+    })
+  }
+
+  this.comment_flag = function(id){
+    fact.comment_flag(id, function(message, str){
+      if(!message){
+        self.commentFlagFlash = {str: str, id: id}
+      } else{
+        fact.findOne(function(data){
+          self.topic = data
+        })
+      }
+    })
+  }
 
 }])
 

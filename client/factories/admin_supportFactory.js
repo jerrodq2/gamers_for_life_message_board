@@ -42,6 +42,11 @@ app.factory('admin_supportFactory', ['$http', '$routeParams', '$location','$cook
       callback(response.data)
     })
   }
+  factory.flags = function(callback){
+    http.get('/findFlags').then(function(response){
+      callback(response.data)
+    })
+  }
 
   factory.resolve = function(id, callback){
     http.get('/resolve/'+id).then(function(response){
@@ -58,6 +63,54 @@ app.factory('admin_supportFactory', ['$http', '$routeParams', '$location','$cook
         callback(true)
       } else {
         callback(false)
+      }
+    })
+  }
+
+  factory.deleteTopicFlag = function(id, callback){
+    http.get('/deleteTopicFlag/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      }
+    })
+  }
+
+  factory.deletePostFlag = function(id, callback){
+    http.get('/deletePostFlag/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      }
+    })
+  }
+
+  factory.deleteCommentFlag = function(id, callback){
+    http.get('/deleteCommentFlag/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      }
+    })
+  }
+
+  factory.deleteTopic = function(id, callback){
+    http.get('/delete/topic/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      }
+    })
+  }
+
+  factory.deletePost = function(id, callback){
+    http.get('/delete/post/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      }
+    })
+  }
+
+  factory.deleteComment = function(id, callback){
+    http.get('/admin/delete/comment/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
       }
     })
   }

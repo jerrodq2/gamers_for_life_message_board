@@ -32,11 +32,20 @@ module.exports = function(app){
   //LIKE ROUTES**********************
   app.get('/like/post/:id', Posts.like)
   app.get('/like/comment/:id', Comments.like)
+  //FLAG ROUTES**********************
+  app.get('/flagTopic/:id', Topics.flag)
+  app.get('/flagPost/:id', Posts.flag)
+  app.get('/flagComment/:id', Comments.flag)
   //ADMIN ROUTES*********************
   app.get('/findSupports', Admins.supports)
   app.get('/findFeedbacks', Admins.feedbacks)
+  app.get('/findFlags', Admins.flags)
   app.get('/resolve/:id', Admins.resolve)
   app.get('/delete/:id', Admins.delete)
+  app.get('/deleteTopicFlag/:id', Admins.deleteTopicFlag)
+  app.get('/deletePostFlag/:id', Admins.deletePostFlag)
+  app.get('/deleteCommentFlag/:id', Admins.deleteCommentFlag)
+  app.get('/admin/delete/comment/:id', Comments.adminDelete)
 }
 
 // *******************End*******************

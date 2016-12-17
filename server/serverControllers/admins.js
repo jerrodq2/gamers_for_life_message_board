@@ -1,5 +1,8 @@
 var mongoose = require('mongoose'),
-    Support = mongoose.model('Support')
+    Support = mongoose.model('Support'),
+    Topic = mongoose.model('Topic'),
+    Post = mongoose.model('Post'),
+    Comment = mongoose.model('Comment')
 
 module.exports = {
   create: function(req, res){
@@ -31,6 +34,17 @@ module.exports = {
       res.json(results)
     })
   },
+
+  flags: function(req, res){
+    Topic.find({adminFlag: true}, function(err, topics){
+      Post.find({adminFlag: true}, function(err, posts){
+        Comment.find({adminFlag: true}, function(err, comments){
+          res.json({topics: topics, posts: posts, comments: comments})
+        })// end of Comment find
+      })// end of Post find
+    })// end of Topic find
+  },
+
   resolve: function(req, res){
     if(!req.session.user.admin_status)
       return res.json({message: false})
@@ -50,7 +64,31 @@ module.exports = {
       }
       res.json({message: true})
     })
-  }
+  },
+
+  deleteTopicFlag:function(req, res){
+    if(!req.session.user.admin_status)
+      return res.json({message: false})
+    Topic.update({_id: req.params.id}, {$set: {adminFlag: false}}, function(err){
+      res.json({message: true})
+    })
+  },
+
+  deletePostFlag:function(req, res){
+    if(!req.session.user.admin_status)
+      return res.json({message: false})
+    Post.update({_id: req.params.id}, {$set: {adminFlag: false}}, function(err){
+      res.json({message: true})
+    })
+  },
+
+  deleteCommentFlag:function(req, res){
+    if(!req.session.user.admin_status)
+      return res.json({message: false})
+    Comment.update({_id: req.params.id}, {$set: {adminFlag: false}}, function(err){
+      res.json({message: true})
+    })
+  },
 
 
 

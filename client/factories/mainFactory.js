@@ -122,6 +122,36 @@ app.factory('mainFactory', ['$http', '$routeParams', '$location','$cookies', fun
     })
   }
 
+  factory.topic_flag = function(callback){
+    http.get('/flagTopic/'+routeP.id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      } else {
+        callback(false, response.data.str)
+      }
+    })
+  }
+
+  factory.post_flag = function(id, callback){
+    http.get('/flagPost/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      } else {
+        callback(false, response.data.str)
+      }
+    })
+  }
+
+  factory.comment_flag = function(id, callback){
+    http.get('/flagComment/'+id).then(function(response){
+      if(response.data.message){
+        callback(true)
+      } else {
+        callback(false, response.data.str)
+      }
+    })
+  }
+
   return factory;
 }])
 
