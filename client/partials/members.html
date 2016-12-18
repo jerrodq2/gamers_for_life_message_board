@@ -6,42 +6,49 @@
     <span ng-show='mc.username'><a href="#/"ng-click='mc.logout()'>Logout</a></span>
   </h4>
   <h1>All Members</h1>
-  <h4>Total Members: {{mc.members.length}}</h4>
-  Search Members <input type="text" ng-model='search' placeholder="search...">
-  <table>
+  <h4 class='forum_title'>Total Members: {{mc.members.length}}</h4>
+  Search Members <input type="text" ng-model='search' placeholder="Search...">
+  <table class="col-xs-10 personal_table">
     <tr>
-      <th>Username</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Age</th>
-      <th>Member Since</th>
-      <th>Last Visit</th>
+      <th class="col-xs-2 table_row top_row">Username</th>
+      <th class="col-xs-2 table_row top_row">First Name</th>
+      <th class="col-xs-2 table_row top_row">Last Name</th>
+      <th class="col-xs-2 table_row top_row">Age</th>
+      <th class="col-xs-2 table_row top_row">Member Since</th>
+      <th class="col-xs-2 table_row_end top_row">Last Visit</th>
     </tr>
     <tr ng-show='mc.members.length == 0'>
-      <td> - </td><td> - </td><td> - </td><td> - </td><td> - </td>
+      <td class="col-xs-2 table_row row center"> - </td>
+      <td class="col-xs-2 table_row row center"> - </td>
+      <td class="col-xs-2 table_row row center"> - </td>
+      <td class="col-xs-2 table_row row center"> - </td>
+      <td class="col-xs-2 table_row row center"> - </td>
+      <td class="col-xs-2 table_row_end row center"> - </td>
     </tr>
     <tr ng-repeat="user in mc.members | filter: search | orderBy: orderOption: reverseOption ">
-    <td><a href="#/profile/{{user._id}}">{{user.username}}</a></td>
-    <td ng-show='user.first_name'>{{user.first_name}}</td>
-    <td ng-hide='user.first_name'> - </td>
-    <td ng-show='user.last_name'>{{user.last_name}}</td>
-    <td ng-hide='user.last_name'> - </td>
-    <td ng-show='user.age'>{{user.age}}</td>
-    <td ng-hide='user.age'> - </td>
-    <td>{{user.createdAt | date: "MMM d, y h:mm a"}}</td>
-    <td>{{user.last_visit | date: "MMM d, y h:mm a"}}</td>
+    <td class="col-xs-2 table_row row center"><a href="#/profile/{{user._id}}">{{user.username}}</a></td>
+    <td class="col-xs-2 table_row row center" ng-show='user.first_name'>{{user.first_name}}</td>
+    <td class="col-xs-2 table_row row center" ng-hide='user.first_name'> - </td>
+    <td class="col-xs-2 table_row row center" ng-show='user.last_name'>{{user.last_name}}</td>
+    <td class="col-xs-2 table_row row center" ng-hide='user.last_name'> - </td>
+    <td class="col-xs-2 table_row row center" ng-show='user.age'>{{user.age}}</td>
+    <td class="col-xs-2 table_row row center" ng-hide='user.age'> - </td>
+    <td class="col-xs-2 table_row row center">{{user.createdAt | date: "MMM d, y h:mm a"}}</td>
+    <td class="col-xs-2 table_row_end row center">{{user.last_visit | date: "MMM d, y h:mm a"}}</td>
   </tr>
   </table>
-  Sort by: <select ng-model='orderOption' ng-init="orderOption='username'">
-    <option value="username">Username</option>
-    <option value="age">Age</option>
-    <option value="first_name">First_name</option>
-    <option value="last_name">Last Name</option>
-    <option value="created_At">Join Date</option>
-    <option value="last_visit">Most Recent Activity</option>
-  </select>
-  <select ng-model='reverseOption' ng-init="reverseOption=''">
-    <option value="">Ascending</option>
-    <option value="true">Descending</option>
-  </select>
+  <div class="search">
+    Sort by: <select ng-model='orderOption' ng-init="orderOption='username'">
+      <option value="username">Username</option>
+      <option value="age">Age</option>
+      <option value="first_name">First_name</option>
+      <option value="last_name">Last Name</option>
+      <option value="created_At">Join Date</option>
+      <option value="last_visit">Most Recent Activity</option>
+    </select>
+    <select ng-model='reverseOption' ng-init="reverseOption=''">
+      <option value="">Ascending</option>
+      <option value="true">Descending</option>
+    </select>
+  </div>
 </div>
