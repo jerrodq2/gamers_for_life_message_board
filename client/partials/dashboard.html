@@ -20,20 +20,20 @@
         <th class="col-xs-2 table_row_end top_row">Last Activity</th>
       </tr>
       <tr ng-show='dash.topics.length == 0'>
-        <td class="col-xs-1 table_row row"> - </td>
-        <td class="col-xs-2 table_row row"> - </td>
-        <td class="col-xs-4 table_row row"> - </td>
-        <td class="col-xs-1 table_row row"> - </td>
-        <td class="col-xs-1 table_row row"> - </td>
-        <td class="col-xs-2 table_row_end row"> - </td>
+        <td class="col-xs-1 table_row row center"> - </td>
+        <td class="col-xs-2 table_row row center"> - </td>
+        <td class="col-xs-4 table_row row center"> - </td>
+        <td class="col-xs-1 table_row row center"> - </td>
+        <td class="col-xs-1 table_row row center"> - </td>
+        <td class="col-xs-2 table_row_end row center"> - </td>
       </tr>
       <tr ng-repeat='topic in dash.topics | filter: search | orderBy: orderOption: reverseOption'>
         <td class="col-xs-1 table_row row"><a href="#/category/{{topic.category}}">{{topic.category}}</a></td>
         <td class="col-xs-2 table_row row"><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
         <td class="col-xs-4 table_row row">{{topic.description}}</td>
-        <td class="col-xs-1 table_row row"><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
-        <td class="col-xs-1 table_row row">{{topic.posts.length}}</td>
-        <td class="col-xs-2 table_row_end row">{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
+        <td class="col-xs-1 table_row row center"><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
+        <td class="col-xs-1 table_row row center">{{topic.posts.length}}</td>
+        <td class="col-xs-2 table_row_end row center">{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
       </tr>
     </table>
     <div class="search">
@@ -48,13 +48,29 @@
         <option value="">Ascending</option>
         <option value="true">Descending</option>
       </select>
+      <span>Search by category
+      <select ng-model='category' ng-init="category='Consoles'">
+        <option value="Consoles">Consoles</option>
+        <option value="Retro Gaming">Retro Gaming</option>
+        <option value="News">News</option>
+        <option value="Upcoming Games/Tech">Upcoming Games/Tech</option>
+        <option value="Specific Series">Specific Series</option>
+        <option value="Specific Game">Specific Game</option>
+        <option value="PC">PC</option>
+        <option value="Indie">Indie</option>
+        <option value="Handheld">Handheld</option>
+        <option value="Collecting">Collecting</option>
+        <option value="Conventions and Events">Conventions and Events</option>
+        <option value="Other">Other</option>
+      </select>
+      <a href="#/category/{{category}}">Search</a></span>
     </div>
   </div>
   <h3 class="new_topic"><a href="#/create">New Topic</a></h3>
 
   <div>
     <hr>
-    <h2 class="stats">Statistics:</h2>
+    <h2 class="stats_h2">Statistics</h2>
     <h4 class="stats">Total members: {{dash.members.length}} - topics: {{dash.topics.length}} - posts: {{dash.posts.length}} - comments: {{dash.comments.length}}</h4>
   </div>
 </div>
