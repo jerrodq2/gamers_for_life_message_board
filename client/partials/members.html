@@ -1,5 +1,5 @@
 <div ng-controller='membersController as mc'>
-  <h4 class='navbar'>
+  <h4 class='col-xs-12 navbar'>
     <span ng-show='!mc.username'><a href="#/">Login</a></span>
     <span ng-show='mc.admin_status == "true"'><a href="#/admin">Admin</a></span>
     <a ng-show='mc.username' href="#/profile/{{mc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>

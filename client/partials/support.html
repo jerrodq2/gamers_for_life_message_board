@@ -1,5 +1,5 @@
 <div ng-controller='admin_supportController as asc'>
-  <h4 class='navbar'>
+  <h4 class='col-xs-12 navbar'>
     <span ng-show='!asc.username'><a href="#/">Login</a></span>
     <span ng-show='asc.admin_status == "true"'><a href="#/admin">Admin</a></span>
     <a ng-show='asc.username' href="#/profile/{{asc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
@@ -10,7 +10,7 @@
   {{asc.flash}}
   <form>
     Name (optional) <input type="text" ng-model='asc.newSupport.user_name'>
-    Email (optional) <input type="email" ng-model='asc.newSupport.email'>
+    Email (optional) <input type="email" ng-model='asc.newSupport.user_email'>
     Subject <input type="text" ng-model='asc.newSupport.subject'>
     Type: <select ng-model='asc.newSupport.type' ng-init='asc.newSupport.type="support"'>
       <option value="support">User Support</option>
