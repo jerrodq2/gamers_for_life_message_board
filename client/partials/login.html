@@ -6,12 +6,13 @@
 
   <div class="col-md-6 col-md-offset-4">
     <h1 class="col-md-offset-3 login_header">Login</h1>
-    {{lrc.loginFlash}}
+
     <form>
       <label class="col-xs-12 col-md-4">Username: <input type="text" ng-model='lrc.log.username'></label>
       <label class="col-xs-12 col-md-4">Password: <input type="password" ng-model='lrc.log.password'></label>
       <span class="col-xs-12"><input class='create' type="submit" ng-click='lrc.login()' value="Login"></span>
     </form>
+    <span class='flash col-xs-12 log_flash'>{{lrc.loginFlash}}</span>
     <p class="col-xs-12 reg">
       Not yet a member? <a href="#/register">Register</a> now!
     </p>

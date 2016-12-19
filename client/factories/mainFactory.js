@@ -21,12 +21,18 @@ app.factory('mainFactory', ['$http', '$routeParams', '$location','$cookies', fun
       return callback(false, 'Please fill out all fields')
     } else if(angular.isUndefined(data.topic) || data.topic.length == 0){
       return callback(false, "Topic can't be blank")
+    } else if(data.topic.length < 5){
+      return callback(false, "Topic must be at least 5 characters long")
+    } else if(data.topic.length > 50){
+      return callback(false, "Topic can't be more than 50 characters")
     } else if(angular.isUndefined(data.category) || data.category.length == 0){
       return callback(false, 'A category must be selected')
     } else if(angular.isUndefined(data.description)){
       return callback(false, "Description can't be blank")
     } else if(data.description.length < 10){
       return callback(false, "Description must be at least 10 characters long")
+    } else if(data.description.length > 200){
+      return callback(false, "Description can't be more than 200 characters")
     } // END OF VALIDATIONS
     http.post('/createTopic', data).then(function(response){
       if(!response.data.message){
