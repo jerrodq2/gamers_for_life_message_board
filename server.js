@@ -5,7 +5,7 @@ var express = require('express'),
     session = require('express-session')
     MongoStore = require('connect-mongo')(session)
 // mongoose.Promise = global.Promise;
-app.use(session({secret: 'testingoutsessions', resave: false, saveUninitialized: false, store: new MongoStore({url: 'mongodb://localhost/dbNameHere'})}))
+app.use(session({secret: 'firstProjectTime', resave: false, saveUninitialized: false, store: new MongoStore({url: 'mongodb://localhost/message_forum_project'})}))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, './client')))
@@ -16,23 +16,10 @@ require('./server/config/mongoose.js')
 require('./server/config/routes.js')(app)
 
 
-server = app.listen(8000)
+var port = 8000
+app.listen(port, function(){
+  console.log('Server on port: ' + port)
+})
 
 
 // *******************End*******************
-
-
-// SOCKET STUFF BELOW
-
-// var io = require('socket.io').listen(server)
-// io.sockets.on('connection', function (socket) {
-//   socket.on('button_clicked', function (data) {
-//     //  EMIT:
-//     socket.emit('my_emit_event');
-//     //  BROADCAST:
-//     socket.broadcast.emit("my_broadcast_event");
-//     //  FULL BROADCAST:
-//     io.emit("my_full_broadcast_event");
-// })
-//
-// })
