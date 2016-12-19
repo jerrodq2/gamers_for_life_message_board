@@ -3,7 +3,7 @@ var mongoose      = require('mongoose'),
     path          = require('path'),
     models_path   = path.join( __dirname, "../serverModels"),
     reg           = new RegExp( ".js$", "i" ),
-    dbURI         = 'mongodb://localhost/YOURDBNAMEHERE'
+    dbURI         = 'mongodb://localhost/message_forum_project'
 
 mongoose.connect( dbURI )
 
