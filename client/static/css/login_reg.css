@@ -1,0 +1,15 @@
+.login_header{
+  margin-bottom: 10px;
+}
+.reg{
+  margin-top: 20px;
+}
+.name{
+  display: block;
+}
+.reg_button{
+  color: white;
+  background: blue;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 0 black;
+}
