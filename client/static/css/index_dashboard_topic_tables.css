@@ -9,6 +9,7 @@
   margin-bottom: 30px;
 }
 footer{
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 .navbar{
@@ -92,6 +93,9 @@ footer{
   background: green;
   border-radius: 5px;
   box-shadow: 1px 1px 2px 0 black;
+}
+.post{
+  margin-bottom: 30px;
 }
 .create{
   background-color: lightgrey;

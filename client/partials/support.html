@@ -5,24 +5,32 @@
     <a ng-show='asc.username' href="#/profile/{{asc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='asc.username'><a href="#/"ng-click='asc.logout()'>Logout</a></span>
   </h4>
-  <h1>Support/Feedback</h1>
-  <p class="bottom_space">If you've experienced an issue with the website or its functions, please select User Support under Type. If you'd like to submit any feedback or suggested improvements/additions to the site, please select Feedback. If you would like to be contacted about the matter, please include your name and email.</p>
-  {{asc.flash}}
-  <form>
-    <span class="col-md-12">
-      <label class="col-xs-12 col-md-3 support">Name (optional) <input type="text" ng-model='asc.newSupport.user_name'></label>
-      <label class="col-xs-12 col-md-3 support">Email (optional) <input type="email" ng-model='asc.newSupport.user_email'></label>
-    </span>
-    <span class="col-md-12">
-      <label class="col-xs-12 col-md-3 support">Subject <input class="subject_input" type="text" ng-model='asc.newSupport.subject'></label>
-      <label class="col-xs-12 col-md-3 support">Type: <select class="type_input" ng-model='asc.newSupport.type' ng-init='asc.newSupport.type="support"'>
-        <option value="support">User Support</option>
-        <option value="feedback">Feedback</option>
-      </select></label>
-    </span>
-    <span class="col-xs-12">
-      <span class="description">Description</span> <textarea ng-model='asc.newSupport.description' rows="5" cols="40"></textarea>
-      <input class="description create" type="submit" ng-click='asc.submit()' value="Submit Form">
-    </span>
-  </form>
+  <div class="col-xs-12 col-md-8 col-md-offset-3">
+
+    <h1 class="col-xs-12 col-md-offset-3">Support/Feedback</h1>
+    <p class="bottom_space">If you've experienced an issue with the website or its functions, please select User Support under Type. If you'd like to submit any feedback or suggested improvements/additions to the site, please select Feedback. If you would like to be contacted about the matter, please include your name and email.</p>
+    {{asc.flash}}
+
+    <form class="col-md-8 col-md-offset-2">
+      <span class="col-md-12">
+        <label class="col-xs-12 col-md-4 support"><span class="support_inputs">Name (optional)</span> <input type="text" ng-model='asc.newSupport.user_name'></label>
+        <label class="col-xs-12 col-md-3 support"><span class="support_inputs">Email (optional)</span> <input type="email" ng-model='asc.newSupport.user_email'></label>
+      </span>
+
+      <span class="col-md-12">
+        <label class="col-xs-12 col-md-4 support"><span class="support_inputs">Subject</span> <input type="text" ng-model='asc.newSupport.subject'></label>
+        <label class="col-xs-12 col-md-3 support"><span class="support_inputs">Type</span> <select ng-model='asc.newSupport.type' ng-init='asc.newSupport.type="support"'>
+          <option value="support">User Support</option>
+          <option value="feedback">Feedback</option>
+        </select></label>
+      </span>
+
+      <span class="col-xs-12 col-md-offset-1">
+        <span class="description">Description</span> <textarea ng-model='asc.newSupport.description' rows="5" cols="35"></textarea>
+        <input class="description create" type="submit" ng-click='asc.submit()' value="Submit Form">
+      </span>
+    </form>
+
+  </div>
+
 </div>

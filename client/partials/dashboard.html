@@ -5,72 +5,78 @@
     <a ng-show='dash.username' href="#/profile/{{dash.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='dash.username'><a href="#/"ng-click='dash.logout()'>Logout</a></span>
   </h4>
-  <h1>Welcome {{dash.username}}</h1>
-  <h5 ng-show='dash.username'>Last visit was: {{dash.last_visit | date: "MMM d, y h:mm a"}}</h5>
-  <div>
-    <h3 class="forum_title">Forum</h3>
-    <input type="text" ng-model='search' placeholder="Search....">
-    <table class="col-xs-10 personal_table">
-      <tr>
-        <th class="col-xs-1 table_row top_row">Category</th>
-        <th class="col-xs-2 table_row top_row">Topic</th>
-        <th class="col-xs-4 table_row top_row">Description</th>
-        <th class="col-xs-1 table_row top_row">Started By</th>
-        <th class="col-xs-1 table_row top_row">Posts</th>
-        <th class="col-xs-2 table_row_end top_row">Last Activity</th>
-      </tr>
-      <tr ng-show='dash.topics.length == 0'>
-        <td class="col-xs-1 table_row row center"> - </td>
-        <td class="col-xs-2 table_row row center"> - </td>
-        <td class="col-xs-4 table_row row center"> - </td>
-        <td class="col-xs-1 table_row row center"> - </td>
-        <td class="col-xs-1 table_row row center"> - </td>
-        <td class="col-xs-2 table_row_end row center"> - </td>
-      </tr>
-      <tr ng-repeat='topic in dash.topics | filter: search | orderBy: orderOption: reverseOption'>
-        <td class="col-xs-1 table_row row"><a href="#/category/{{topic.category}}">{{topic.category}}</a></td>
-        <td class="col-xs-2 table_row row"><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
-        <td class="col-xs-4 table_row row">{{topic.description}}</td>
-        <td class="col-xs-1 table_row row center"><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
-        <td class="col-xs-1 table_row row center">{{topic.posts.length}}</td>
-        <td class="col-xs-2 table_row_end row center">{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
-      </tr>
-    </table>
-    <div class="search">
-      Sort by: <select ng-model='orderOption' ng-init="orderOption='date'">
-        <option value="date">Most Recent</option>
-        <option value="username">User</option>
-        <option value="category">Category</option>
-        <option value="topic">Topic</option>
-        <option value="posts">Posts</option>
-      </select>
-      <select ng-model='reverseOption' ng-init="reverseOption=''">
-        <option value="">Ascending</option>
-        <option value="true">Descending</option>
-      </select>
-      <span>Search by category
-      <select ng-model='category' ng-init="category='Consoles'">
-        <option value="Consoles">Consoles</option>
-        <option value="Retro Gaming">Retro Gaming</option>
-        <option value="News">News</option>
-        <option value="Upcoming Games/Tech">Upcoming Games/Tech</option>
-        <option value="Specific Series">Specific Series</option>
-        <option value="Specific Game">Specific Game</option>
-        <option value="PC">PC</option>
-        <option value="Indie">Indie</option>
-        <option value="Handheld">Handheld</option>
-        <option value="Collecting">Collecting</option>
-        <option value="Conventions and Events">Conventions and Events</option>
-        <option value="Other">Other</option>
-      </select>
-      <a href="#/category/{{category}}">Search</a></span>
-    </div>
-  </div>
-  <h3 class="new_topic"><a href="#/create">New Topic</a></h3>
 
-  <div>
-    <hr>
-    <h2 class="stats_h2">Statistics</h2>
-    <h4 class="stats">Total members: {{dash.members.length}} - topics: {{dash.topics.length}} - posts: {{dash.posts.length}} - comments: {{dash.comments.length}}</h4>
+  <div class="col-xs-12">
+
+    <h1>Welcome {{dash.username}}</h1>
+    <h5 ng-show='dash.username'>Last visit was: {{dash.last_visit | date: "MMM d, y h:mm a"}}</h5>
+    <div>
+      <h3 class="forum_title">Forum</h3>
+      <input type="text" ng-model='search' placeholder="Search....">
+      <table class="col-xs-10 personal_table">
+        <tr>
+          <th class="col-xs-1 table_row top_row">Category</th>
+          <th class="col-xs-2 table_row top_row">Topic</th>
+          <th class="col-xs-4 table_row top_row">Description</th>
+          <th class="col-xs-1 table_row top_row">Started By</th>
+          <th class="col-xs-1 table_row top_row">Posts</th>
+          <th class="col-xs-2 table_row_end top_row">Last Activity</th>
+        </tr>
+        <tr ng-show='dash.topics.length == 0'>
+          <td class="col-xs-1 table_row row center"> - </td>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-4 table_row row center"> - </td>
+          <td class="col-xs-1 table_row row center"> - </td>
+          <td class="col-xs-1 table_row row center"> - </td>
+          <td class="col-xs-2 table_row_end row center"> - </td>
+        </tr>
+        <tr ng-repeat='topic in dash.topics | filter: search | orderBy: orderOption: reverseOption'>
+          <td class="col-xs-1 table_row row"><a href="#/category/{{topic.category}}">{{topic.category}}</a></td>
+          <td class="col-xs-2 table_row row"><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
+          <td class="col-xs-4 table_row row">{{topic.description}}</td>
+          <td class="col-xs-1 table_row row center"><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
+          <td class="col-xs-1 table_row row center">{{topic.posts.length}}</td>
+          <td class="col-xs-2 table_row_end row center">{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
+        </tr>
+      </table>
+      <div class="search">
+        Sort by: <select ng-model='orderOption' ng-init="orderOption='date'">
+          <option value="date">Most Recent</option>
+          <option value="username">User</option>
+          <option value="category">Category</option>
+          <option value="topic">Topic</option>
+          <option value="posts">Posts</option>
+        </select>
+        <select ng-model='reverseOption' ng-init="reverseOption=''">
+          <option value="">Ascending</option>
+          <option value="true">Descending</option>
+        </select>
+        <span>Search by category
+        <select ng-model='category' ng-init="category='Consoles'">
+          <option value="Consoles">Consoles</option>
+          <option value="Retro Gaming">Retro Gaming</option>
+          <option value="News">News</option>
+          <option value="Upcoming Games/Tech">Upcoming Games/Tech</option>
+          <option value="Specific Series">Specific Series</option>
+          <option value="Specific Game">Specific Game</option>
+          <option value="PC">PC</option>
+          <option value="Indie">Indie</option>
+          <option value="Handheld">Handheld</option>
+          <option value="Collecting">Collecting</option>
+          <option value="Conventions and Events">Conventions and Events</option>
+          <option value="Other">Other</option>
+        </select>
+        <a href="#/category/{{category}}">Search</a></span>
+      </div>
+    </div>
+    <h3 class="new_topic"><a href="#/create">New Topic</a></h3>
+
+    <div>
+      <hr>
+      <h2 class="stats_h2">Statistics</h2>
+      <h4 class="stats">Total members: {{dash.members.length}} - topics: {{dash.topics.length}} - posts: {{dash.posts.length}} - comments: {{dash.comments.length}}</h4>
+    </div>
+
   </div>
+
 </div>
