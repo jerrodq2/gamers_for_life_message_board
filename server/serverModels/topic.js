@@ -14,11 +14,13 @@ var TopicSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
+    maxlength: 50,
   },
   description:{
     type: String,
     required: true,
     minlength: 10,
+    maxlength: 200,
   },
   category:{
     type: String,

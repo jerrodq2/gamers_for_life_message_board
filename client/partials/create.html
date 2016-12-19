@@ -8,7 +8,7 @@
   <div class="col-xs-12 col-md-8 col-md-offset-4">
 
     <h1 class="col-md-offset-1">New Topic</h1>
-    {{dash.flash}}
+
     <form>
 
       <span class="col-xs-12 col-md-6">
@@ -33,6 +33,7 @@
         <span class="description">Description:</span> <textarea ng-model='dash.newTopic.description' rows="7" cols="40"></textarea>
         <input class="create description" type="submit" ng-click='dash.create()' value="Create New Topic">
       </span>
+      <span class='flash col-md-offset-1 col-xs-12'>{{dash.flash}}</span>
 
     </form>
     <span class="col-xs-12 cancel_button">

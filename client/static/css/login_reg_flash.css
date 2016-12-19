@@ -13,3 +13,12 @@
   border-radius: 5px;
   box-shadow: 2px 2px 2px 0 black;
 }
+.flash{
+  color: red;
+}
+.log_flash{
+  margin-top: 20px;
+}
+.top_buffer{
+  margin-top: 10px;
+}

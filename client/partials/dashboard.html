@@ -13,11 +13,11 @@
     <div>
       <h3 class="forum_title">Forum</h3>
       <input type="text" ng-model='search' placeholder="Search....">
-      <table class="col-xs-10 personal_table">
+      <table class="col-xs-12 personal_table">
         <tr>
           <th class="col-xs-1 table_row top_row">Category</th>
           <th class="col-xs-2 table_row top_row">Topic</th>
-          <th class="col-xs-4 table_row top_row">Description</th>
+          <th class="col-xs-5 table_row top_row">Description</th>
           <th class="col-xs-1 table_row top_row">Started By</th>
           <th class="col-xs-1 table_row top_row">Posts</th>
           <th class="col-xs-2 table_row_end top_row">Last Activity</th>
@@ -25,7 +25,7 @@
         <tr ng-show='dash.topics.length == 0'>
           <td class="col-xs-1 table_row row center"> - </td>
           <td class="col-xs-2 table_row row center"> - </td>
-          <td class="col-xs-4 table_row row center"> - </td>
+          <td class="col-xs-5 table_row row center"> - </td>
           <td class="col-xs-1 table_row row center"> - </td>
           <td class="col-xs-1 table_row row center"> - </td>
           <td class="col-xs-2 table_row_end row center"> - </td>
@@ -33,7 +33,7 @@
         <tr ng-repeat='topic in dash.topics | filter: search | orderBy: orderOption: reverseOption'>
           <td class="col-xs-1 table_row row"><a href="#/category/{{topic.category}}">{{topic.category}}</a></td>
           <td class="col-xs-2 table_row row"><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
-          <td class="col-xs-4 table_row row">{{topic.description}}</td>
+          <td class="col-xs-5 table_row row">{{topic.description}}</td>
           <td class="col-xs-1 table_row row center"><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
           <td class="col-xs-1 table_row row center">{{topic.posts.length}}</td>
           <td class="col-xs-2 table_row_end row center">{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>

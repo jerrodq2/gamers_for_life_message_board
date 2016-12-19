@@ -9,7 +9,7 @@
   <div class=" col-xs-12 col-md-10 col-md-offset-2">
     <h3>Change Basic Info</h3>
     <div ng-repeat='user in pc.editUser'>
-      {{pc.editFlash}}
+
       <form>
         <span class="col-md-12">
           <label class="col-xs-12 col-md-5 edit_inputs">First Name: <input type="text" ng-model='pc.editInfo.first_name'
@@ -26,12 +26,13 @@
         </span>
         <span class='col-xs-12'><input class="create" type="submit" ng-click='pc.edit(user._id)' value="Submit"></span>
       </form>
+      <span class="flash col-xs-12">{{pc.editFlash}}</span>
     </div>
 
 
     <div ng-repeat='user in pc.editUser'>
       <h3 class="sensitive col-xs-12">Change Username or password</h3>
-      {{pc.changePassFlash}}
+
       <form>
         <span class="col-xs-12">
           <label class="col-xs-12 col-md-2">Username: <input class="sensitive_input" type="text" ng-model='pc.passChange.username' ng-init='pc.passChange.username=user.username'></label>
@@ -43,6 +44,7 @@
           <p class="col-xs-12 sensitive_confirm"ng-show='confirm'><button class='change' ng-click='pc.changePass(user._id)'>Confirm</button><button class='cancel' ng-click='confirm = false'>Cancel</button>
         </span>
       </form>
+      <span class="flash col-xs-12">{{pc.changePassFlash}}</span>
     </div>
     <h4 class="col-xs-12 col-md-offset-4"><a href="#/profile/{{pc.user._id}}">Cancel</a></h4>
   </div>

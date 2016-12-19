@@ -9,7 +9,7 @@
 
     <h1 class="col-xs-12 col-md-offset-3">Support/Feedback</h1>
     <p class="bottom_space">If you've experienced an issue with the website or its functions, please select User Support under Type. If you'd like to submit any feedback or suggested improvements/additions to the site, please select Feedback. If you would like to be contacted about the matter, please include your name and email.</p>
-    {{asc.flash}}
+
 
     <form class="col-md-8 col-md-offset-2">
       <span class="col-md-12">
@@ -29,6 +29,7 @@
         <span class="description">Description</span> <textarea ng-model='asc.newSupport.description' rows="5" cols="35"></textarea>
         <input class="description create" type="submit" ng-click='asc.submit()' value="Submit Form">
       </span>
+      <span class='flash col-xs-12 col-md-offset-2'>{{asc.flash}}</span>
     </form>
 
   </div>
