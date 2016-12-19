@@ -5,19 +5,44 @@
     <a ng-show='pc.username' href="#/profile/{{pc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='pc.username'><a href="#/"ng-click='pc.logout()'>Logout</a></span>
   </h4>
-  <h1>User: {{pc.user.username}}</h1>
-  <h3>Full Name: {{pc.user.first_name}} {{pc.user.last_name}}</h3>
-  <h3>Age:</h3>
-  <p>{{pc.user.age}}</p>
-  <h3>Biography:</h3>
-  <p>{{pc.user.bio}}</p>
-  <h3>Hobbies:</h3>
-  <p>{{pc.user.hobbies}}</p>
-  <h3>Favorite Game:</h3>
-  <p>{{pc.user.fav_game}}</p>
-  <h3>Statistics:</h3>
-  <h4>Topics: {{pc.topics.length}}, Posts:{{pc.posts.length}}, Comments{{pc.comments.length}}</h4>
-  <h4>Last Login: {{pc.user.last_visit | date: "MMM d, y h:mm a"}}, Joined on {{pc.user.createdAt | date: "MMM d, y"}}</h4>
-<a ng-show='pc.id == pc.user._id' href="#/profile/edit/{{pc.user._id}}">Edit Profile</a>
 
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+    <span class="col-xs-12">
+      <h1>User: {{pc.user.username}}</h1>
+    </span>
+
+    <div class="col-md-6">
+      <span class="col-xs-12">
+        <h3>Full Name: {{pc.user.first_name}} {{pc.user.last_name}}</h3>
+      </span>
+      <span class="col-xs-12">
+        <h3>Age: {{pc.user.age}}</h3>
+      </span>
+      <span class="col-xs-12">
+        <h3>Favorite Game:</h3>
+        <p>{{pc.user.fav_game}}</p>
+      </span>
+      <span class="col-xs-12">
+        <h3>Hobbies:</h3>
+        <p>{{pc.user.hobbies}}</p>
+      </span>
+    </div>
+
+    <div class="col-md-6">
+      <span class="col-xs-12">
+        <h3>Biography:</h3>
+        <p>{{pc.user.bio}}</p>
+      </span>
+      <div class="col-xs-12">
+        <h3>Statistics:</h3>
+        <h4>Topics: {{pc.topics.length}}, Posts:{{pc.posts.length}}, Comments{{pc.comments.length}}</h4>
+        <p>Joined on {{pc.user.createdAt | date: "MMM d, y"}}</p>
+        <p>Last Login: {{pc.user.last_visit | date: "MMM d, y h:mm a"}}</p>
+      </div>
+    </div>
+
+    <h4 class="col-xs-12 col-md-12 col-md-offset-5 edit_profile"><a ng-show='pc.id == pc.user._id' href="#/profile/edit/{{pc.user._id}}">Edit Profile</a></h4>
+
+  </div>
 </div>
