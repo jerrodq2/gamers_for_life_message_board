@@ -21,14 +21,14 @@ module.exports = {
     })
   },
   supports: function(req, res){
-    if(!req.session.user.admin_status)
+    if(!req.session.user || !req.session.user.admin_status)
       return res.json({message: false})
     Support.find({status: 'active', type: 'support'}, function(err, results){
       res.json(results)
     })
   },
   feedbacks: function(req, res){
-    if(!req.session.user.admin_status)
+    if(!req.session.user || !req.session.user.admin_status)
       return res.json({message: false})
     Support.find({status: 'active', type: 'feedback'}, function(err, results){
       res.json(results)
