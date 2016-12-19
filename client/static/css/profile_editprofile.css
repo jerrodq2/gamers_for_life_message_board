@@ -1,0 +1,22 @@
+.edit_profile{
+  margin-top: 20px;
+}
+.edit_inputs{
+  margin: 10px 0;
+}
+.sensitive{
+  margin-top: 30px;
+}
+.sensitive_input{
+  width: 130px;
+}
+.change{
+  color: white;
+  background: blue;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px 0 black;
+  margin-right: 20px;
+}
+.sensitive_confirm{
+  margin-top: 20px;
+}
