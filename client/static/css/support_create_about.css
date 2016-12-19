@@ -1,15 +1,12 @@
 .bottom_space{
   margin-bottom: 20px;
 }
-.subject_input{
-  margin-left: 53px;
-}
-.type_input{
-  margin-left: 69px;
-  width: 120px;
-}
 .support{
   margin-top: 15px;
+}
+.support_inputs{
+  display: block;
+  margin-bottom: 4px;
 }
 .description{
   display: block;
@@ -33,7 +30,6 @@
 .image{
   height: 25px;
   margin-right: 10px;
-  margin-top: 10px;
 }
 .image_main{
   height: 20px;

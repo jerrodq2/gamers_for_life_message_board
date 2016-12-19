@@ -5,132 +5,137 @@
     <a ng-show='asc.username' href="#/profile/{{asc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='asc.username'><a href="#/"ng-click='asc.logout()'>Logout</a></span>
   </h4>
-  <h1>Admin</h1>
-  <div class="">
-    <h3>Support</h3>
+  <div class="col-xs-12">
+
+    <h1>Admin</h1>
+    <div class="">
+      <h3>Support</h3>
+      <table class="col-xs-10 personal_table">
+        <tr>
+          <td class="col-xs-2 table_row top_row">Name</td>
+          <td class="col-xs-2 table_row top_row">Email</td>
+          <td class="col-xs-2 table_row top_row">Subject</td>
+          <td class="col-xs-4 table_row top_row">Description</td>
+          <td class="col-xs-2 table_row_end top_row">Actions</td>
+        </tr>
+        <tr ng-show='asc.supports.length == 0'>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-4 table_row row center"> - </td>
+          <td class="col-xs-2 table_row_end row center"> - </td>
+        </tr>
+        <tr ng-repeat='support in asc.supports'>
+          <td class="col-xs-2 table_row row center" ng-show='support.user_name'>{{support.user_name}}</td>
+          <td class="col-xs-2 table_row row center" ng-show='!support.user_name'> - </td>
+          <td class="col-xs-2 table_row row center" ng-show='support.user_email'>{{support.user_email}}</td>
+          <td class="col-xs-2 table_row row center" ng-show='!support.user_email'> - </td>
+          <td class="col-xs-2 table_row row">{{support.subject}}</td>
+          <td class="col-xs-4 table_row row">{{support.description}}</td>
+          <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.support_resolve(support._id)'>Change Status</button> | <button class='delete' ng-click='asc.support_delete(support._id)'>Delete</button></td>
+        </tr>
+      </table>
+
+
+    </div>
+    <div class="">
+      <h3>Feedback</h3>
+      <table class="col-xs-10 personal_table">
+        <tr>
+          <td class="col-xs-2 table_row top_row">Name</td>
+          <td class="col-xs-2 table_row top_row">Email</td>
+          <td class="col-xs-2 table_row top_row">Subject</td>
+          <td class="col-xs-4 table_row top_row">Description</td>
+          <td class="col-xs-2 table_row_end top_row">Actions</td>
+        </tr>
+        <tr ng-show='asc.feedbacks.length == 0'>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-4 table_row row center"> - </td>
+          <td class="col-xs-2 table_row_end row center"> - </td>
+        </tr>
+        <tr ng-repeat='feedback in asc.feedbacks'>
+          <td class="col-xs-2 table_row row center" ng-show='feedback.user_name'>{{feedback.user_name}}</td>
+          <td class="col-xs-2 table_row row center" ng-s centerhow='!feedback.user_name'> - </td>
+          <td class="col-xs-2 table_row row center" ng-show='feedback.user_email'>{{feedback.user_email}}</td>
+          <td class="col-xs-2 table_row row center" ng-show='!feedback.user_email'> - </td>
+          <td class="col-xs-2 table_row row">{{feedback.subject}}</td>
+          <td class="col-xs-4 table_row row">{{feedback.description}}</td>
+          <td class="col-xs-2 table_row_end row center"><button class='change_status' ng-click='asc.feedback_resolve(feedback._id)'>Change Status</button> | <button class='delete' ng-click='asc.feedback_delete(feedback._id)'>Delete</button></td>
+        </tr>
+      </table>
+    </div>
+
+
+    </br>
+    <h3>Flagged Items</h3>
+    <hr>
+    <h4>Topics</h4>
     <table class="col-xs-10 personal_table">
       <tr>
-        <td class="col-xs-2 table_row top_row">Name</td>
-        <td class="col-xs-2 table_row top_row">Email</td>
-        <td class="col-xs-2 table_row top_row">Subject</td>
-        <td class="col-xs-4 table_row top_row">Description</td>
-        <td class="col-xs-2 table_row_end top_row">Actions</td>
+        <th class="col-xs-2 table_row top_row">User</th>
+        <th class="col-xs-2 table_row top_row">Topic</th>
+        <th class="col-xs-2 table_row top_row">Category</th>
+        <th class="col-xs-4 table_row top_row">Description</th>
+        <th class="col-xs-2 table_row_end top_row">Actions</th>
       </tr>
-      <tr ng-show='asc.supports.length == 0'>
+      <tr ng-show='asc.topics.length == 0'>
         <td class="col-xs-2 table_row row center"> - </td>
         <td class="col-xs-2 table_row row center"> - </td>
         <td class="col-xs-2 table_row row center"> - </td>
         <td class="col-xs-4 table_row row center"> - </td>
         <td class="col-xs-2 table_row_end row center"> - </td>
       </tr>
-      <tr ng-repeat='support in asc.supports'>
-        <td class="col-xs-2 table_row row center" ng-show='support.user_name'>{{support.user_name}}</td>
-        <td class="col-xs-2 table_row row center" ng-show='!support.user_name'> - </td>
-        <td class="col-xs-2 table_row row center" ng-show='support.user_email'>{{support.user_email}}</td>
-        <td class="col-xs-2 table_row row center" ng-show='!support.user_email'> - </td>
-        <td class="col-xs-2 table_row row">{{support.subject}}</td>
-        <td class="col-xs-4 table_row row">{{support.description}}</td>
-        <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.support_resolve(support._id)'>Change Status</button> | <button class='delete' ng-click='asc.support_delete(support._id)'>Delete</button></td>
+      <tr ng-repeat = 'topic in asc.topics'>
+        <td class="col-xs-2 table_row row">{{topic.username}}</td>
+        <td class="col-xs-2 table_row row">{{topic.topic}}</td>
+        <td class="col-xs-2 table_row row">{{topic.category}}</td>
+        <td class="col-xs-4 table_row row">{{topic.description}}</td>
+        <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.deleteTopicFlag(topic._id)'>Delete Flag</button> | <button class='delete' ng-click='asc.deleteTopic(topic._id)'>Delete Topic</button></td>
       </tr>
     </table>
 
 
-  </div>
-  <div class="">
-    <h3>Feedback</h3>
+    <h4>Posts</h4>
     <table class="col-xs-10 personal_table">
       <tr>
-        <td class="col-xs-2 table_row top_row">Name</td>
-        <td class="col-xs-2 table_row top_row">Email</td>
-        <td class="col-xs-2 table_row top_row">Subject</td>
-        <td class="col-xs-4 table_row top_row">Description</td>
-        <td class="col-xs-2 table_row_end top_row">Actions</td>
+        <th class="col-xs-2 table_row top_row">User</th>
+        <th class="col-xs-4 table_row top_row">Post</th>
+        <th class="col-xs-2 table_row_end top_row">Actions</th>
       </tr>
-      <tr ng-show='asc.feedbacks.length == 0'>
-        <td class="col-xs-2 table_row row center"> - </td>
-        <td class="col-xs-2 table_row row center"> - </td>
+      <tr ng-show='asc.posts.length == 0'>
         <td class="col-xs-2 table_row row center"> - </td>
         <td class="col-xs-4 table_row row center"> - </td>
         <td class="col-xs-2 table_row_end row center"> - </td>
       </tr>
-      <tr ng-repeat='feedback in asc.feedbacks'>
-        <td class="col-xs-2 table_row row center" ng-show='feedback.user_name'>{{feedback.user_name}}</td>
-        <td class="col-xs-2 table_row row center" ng-s centerhow='!feedback.user_name'> - </td>
-        <td class="col-xs-2 table_row row center" ng-show='feedback.user_email'>{{feedback.user_email}}</td>
-        <td class="col-xs-2 table_row row center" ng-show='!feedback.user_email'> - </td>
-        <td class="col-xs-2 table_row row">{{feedback.subject}}</td>
-        <td class="col-xs-4 table_row row">{{feedback.description}}</td>
-        <td class="col-xs-2 table_row_end row center"><button class='change_status' ng-click='asc.feedback_resolve(feedback._id)'>Change Status</button> | <button class='delete' ng-click='asc.feedback_delete(feedback._id)'>Delete</button></td>
+      <tr ng-repeat= 'post in asc.posts'>
+        <td class="col-xs-2 table_row row">{{post.username}}</td>
+        <td class="col-xs-4 table_row row">{{post.post}}</td>
+        <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.deletePostFlag(post._id)'>Delete Flag</button> | <button class='delete' ng-click='asc.deletePost(post._id)'>Delete Post</button></td>
       </tr>
     </table>
+
+
+    <h4>Comments</h4>
+    <table class="col-xs-10 personal_table">
+      <tr>
+        <th class="col-xs-2 table_row top_row">User</th>
+        <th class="col-xs-4 table_row top_row">Comment</th>
+        <th class="col-xs-2 table_row_end top_row">Actions</th>
+      </tr>
+      <tr ng-show='asc.comments.length == 0'>
+        <td class="col-xs-2 table_row row center"> - </td>
+        <td class="col-xs-4 table_row row center"> - </td>
+        <td class="col-xs-2 table_row_end row center"> - </td>
+      </tr>
+      <tr ng-repeat= 'comment in asc.comments'>
+        <td class="col-xs-2 table_row row">{{comment.username}}</td>
+        <td class="col-xs-4 table_row row">{{comment.comment}}</td>
+        <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.deleteCommentFlag(comment._id)'>Delete Flag</button> | <button class='delete' ng-click='asc.deleteComment(comment._id)'>Delete Comment</button></td>
+      </tr>
+    </table>
+
   </div>
-
-
-  </br>
-  <h3>Flagged Items</h3>
-  <hr>
-  <h4>Topics</h4>
-  <table class="col-xs-10 personal_table">
-    <tr>
-      <th class="col-xs-2 table_row top_row">User</th>
-      <th class="col-xs-2 table_row top_row">Topic</th>
-      <th class="col-xs-2 table_row top_row">Category</th>
-      <th class="col-xs-4 table_row top_row">Description</th>
-      <th class="col-xs-2 table_row_end top_row">Actions</th>
-    </tr>
-    <tr ng-show='asc.topics.length == 0'>
-      <td class="col-xs-2 table_row row center"> - </td>
-      <td class="col-xs-2 table_row row center"> - </td>
-      <td class="col-xs-2 table_row row center"> - </td>
-      <td class="col-xs-4 table_row row center"> - </td>
-      <td class="col-xs-2 table_row_end row center"> - </td>
-    </tr>
-    <tr ng-repeat = 'topic in asc.topics'>
-      <td class="col-xs-2 table_row row">{{topic.username}}</td>
-      <td class="col-xs-2 table_row row">{{topic.topic}}</td>
-      <td class="col-xs-2 table_row row">{{topic.category}}</td>
-      <td class="col-xs-4 table_row row">{{topic.description}}</td>
-      <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.deleteTopicFlag(topic._id)'>Delete Flag</button> | <button class='delete' ng-click='asc.deleteTopic(topic._id)'>Delete Topic</button></td>
-    </tr>
-  </table>
-
-
-  <h4>Posts</h4>
-  <table class="col-xs-10 personal_table">
-    <tr>
-      <th class="col-xs-2 table_row top_row">User</th>
-      <th class="col-xs-4 table_row top_row">Post</th>
-      <th class="col-xs-2 table_row_end top_row">Actions</th>
-    </tr>
-    <tr ng-show='asc.posts.length == 0'>
-      <td class="col-xs-2 table_row row center"> - </td>
-      <td class="col-xs-4 table_row row center"> - </td>
-      <td class="col-xs-2 table_row_end row center"> - </td>
-    </tr>
-    <tr ng-repeat= 'post in asc.posts'>
-      <td class="col-xs-2 table_row row">{{post.username}}</td>
-      <td class="col-xs-4 table_row row">{{post.post}}</td>
-      <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.deletePostFlag(post._id)'>Delete Flag</button> | <button class='delete' ng-click='asc.deletePost(post._id)'>Delete Post</button></td>
-    </tr>
-  </table>
-
-
-  <h4>Comments</h4>
-  <table class="col-xs-10 personal_table">
-    <tr>
-      <th class="col-xs-2 table_row top_row">User</th>
-      <th class="col-xs-4 table_row top_row">Comment</th>
-      <th class="col-xs-2 table_row_end top_row">Actions</th>
-    </tr>
-    <tr ng-show='asc.comments.length == 0'>
-      <td class="col-xs-2 table_row row center"> - </td>
-      <td class="col-xs-4 table_row row center"> - </td>
-      <td class="col-xs-2 table_row_end row center"> - </td>
-    </tr>
-    <tr ng-repeat= 'comment in asc.comments'>
-      <td class="col-xs-2 table_row row">{{comment.username}}</td>
-      <td class="col-xs-4 table_row row">{{comment.comment}}</td>
-      <td class="col-xs-2 table_row_end row"><button class='change_status' ng-click='asc.deleteCommentFlag(comment._id)'>Delete Flag</button> | <button class='delete' ng-click='asc.deleteComment(comment._id)'>Delete Comment</button></td>
-    </tr>
-  </table>
+  
 </div>
