@@ -8,9 +8,9 @@
 .main{
   margin-bottom: 30px;
 }
+
 footer{
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 .navbar{
   background: #b2b6c1;
@@ -30,6 +30,7 @@ footer{
 .personal_table{
   margin: 10px 0 10px 0;
   width: 100%;
+  max-width: 100%;
   display: block;
 }
 .table_row{
@@ -128,4 +129,45 @@ li{
   background-color: transparent;
   border: transparent;
   color: blue;
+}
+@media all and (min-width: 1500px){
+  .foot{
+    margin-left: 45%;
+  }
+  .member{
+    margin-left: 42%;
+  }
+  .topic_left{
+    margin-left: 25%
+  }
+}
+@media all and (max-width: 1499px){
+  .foot{
+    margin-left: 43%;
+  }
+  .member{
+    margin-left: 40%;
+  }
+  .topic_left{
+    margin-left: 20%
+  }
+}
+@media all and (max-width: 959px){
+  .foot{
+    margin-left: 40%;
+  }
+  .member{
+    margin-left: 37%;
+  }
+  .topic_left{
+    margin-left: 25%
+  }
+}
+@media all and (max-width: 480px){
+  .foot{
+    margin-left: 30%;
+  }
+  .topic_left{
+    margin-left: 0%
+  }
 }
