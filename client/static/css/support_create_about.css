@@ -35,3 +35,45 @@
   height: 20px;
   margin: 10px 10px 10px 4px;
 }
+@media all and (min-width: 1500px){ /* EXTRA LARGE */
+  .support_small{
+    width: 200px;
+  }
+  .support_box{
+    width: 600px;
+    height: 200px;
+  }
+  .support_box_offest{
+    margin-left: -3%
+  }
+}
+@media all and (max-width: 1499px){ /* LARGE */
+  .support_small{
+    width: 180px;
+  }
+  .support_box{
+    width: 600px;
+    height: 200px;
+  }
+  .support_box_offest{
+    margin-left: -15%
+  }
+}
+@media all and (max-width: 959px){ /* MEDIUM */
+  .support_box{
+    width: 600px;
+    height: 200px;
+  }
+  .support_box_offest{
+    margin-left: 0%
+  }
+}
+@media all and (max-width: 480px){ /* SMALL AND EXTRA SMALL */
+  .support_box{
+    width: 300px;
+    height: 150px;
+  }
+  .support_box_offest{
+    margin-left: 0%
+  }
+}

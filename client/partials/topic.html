@@ -17,7 +17,7 @@
       <p>
         Last Activity: {{tc.topic.updatedAt | date: "MMM d, y h:mm a"}}
         <button class="delete" ng-show='tc.topic.userId == tc.id || tc.admin_status == "true"' ng-click='deleteTopic = true'>Delete</button>
-        <a ng-show='tc.topic.adminFlag == false' ng-click='tc.topic_flag()'><img class="flag" src="../static/images/false_flag.png" alt="white_flag"></a>
+        <a ng-show='tc.topic.adminFlag == false' ng-click='tc.topic_flag()'><img style="cursor: pointer" class="flag" src="../static/images/false_flag.png" alt="white_flag"></a>
         <img class="flag" ng-show='tc.topic.adminFlag == true' src="../static/images/true_flag.png" alt="black_flag">{{tc.topic_flash}}
       </p>
       <p ng-show='deleteTopic'>Are you sure? <button class='confirm' ng-click='tc.topicDelete(tc.topic._id)'>Yes</button> <button class="cancel" ng-click='deleteTopic = false'>No</button></p>
@@ -25,7 +25,7 @@
 
     <div class="col-xs-12 col-md-offset-3 post">
       <form>
-        <textarea ng-model='tc.newPost.post' rows="3" cols="30"></textarea>
+        <textarea class="topic_box" ng-model='tc.newPost.post' rows="3" cols="30"></textarea>
         <span class="col-xs-12"><input class="create" type="submit" ng-click='tc.createPost(tc.topic._id)' value="Submit Post"></span>
       </form>
       <span class='flash col-xs-12 top_buffer'>{{tc.postFlash}}</span>
@@ -38,13 +38,13 @@
         <p>{{post.post}}</p>
         <p>Posted on: {{post.createdAt | date: "MMM d, y h:mm a"}}
           <button class="delete" ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || post.userId == tc.id' ng-click='deletePost = true'>Delete</button>
-          <a ng-show='post.adminFlag == false' ng-click='tc.post_flag(post._id)'><img class="flag" src="../static/images/false_flag.png" alt="white_flag"></a>
+          <a ng-show='post.adminFlag == false' ng-click='tc.post_flag(post._id)'><img style="cursor: pointer" class="flag" src="../static/images/false_flag.png" alt="white_flag"></a>
           <img class="flag" ng-show='post.adminFlag == true' src="../static/images/true_flag.png" alt="black_flag">
           <span ng-show='tc.postFlagFlash.id == post._id'>{{tc.postFlagFlash.str}}</span>
         </p>
         <p ng-show='deletePost'>Are you sure? <button class='confirm' ng-click='tc.postDelete(post._id)'>Yes</button> <button class="cancel" ng-click='deletePost = false'>No</button></p>
         <p>
-          <span ng-show='post.likes.length > 0'>Likes: {{post.likes.length}}</span><img class="like" ng-click='tc.likePost(post._id)' src="../static/images/black_like.png" alt="">
+          <span ng-show='post.likes.length > 0'>Likes: {{post.likes.length}}</span><img style="cursor: pointer" class="like" ng-click='tc.likePost(post._id)' src="../static/images/black_like.png" alt="">
           <span ng-show='tc.postLikeFlash.id == post._id'>{{tc.postLikeFlash.str}}</span>
         </p>
 
@@ -52,13 +52,13 @@
         <ul>
           <li ng-repeat='comment in post.comments' ng-show='$index <= 2 || showComments == true'><a href="#/profile/{{comment.userId}}">{{comment.username}}</a>: {{comment.comment}} <p>Commented on: {{comment.createdAt| date: "MMM d, y h:mm a"}}
             <button class="delete" ng-show='tc.topic.userId == tc.id || tc.admin_status == "true" || comment.userId == tc.id' ng-click='deleteComment = true'>Delete</button>
-            <a ng-show='comment.adminFlag == false' ng-click='tc.comment_flag(comment._id)'><img class="flag" src="../static/images/false_flag.png" alt="white_flag"></a>
+            <a ng-show='comment.adminFlag == false' ng-click='tc.comment_flag(comment._id)'><img style="cursor: pointer" class="flag" src="../static/images/false_flag.png" alt="white_flag"></a>
             <img class="flag" ng-show='comment.adminFlag == true' src="../static/images/true_flag.png" alt="black_flag">
             <span ng-show='tc.commentFlagFlash.id == comment._id'>{{tc.commentFlagFlash.str}}</span>
           </p>
           <p ng-show='deleteComment'>Are you sure? <button class='confirm' ng-click='tc.commentDelete(comment._id, tc.topic._id)'>Yes</button> <button class="cancel" ng-click='deleteComment = false'>No</button></p>
           <p>
-            <span ng-show='comment.likes.length > 0'>Likes: {{comment.likes.length}}</span><img class="like" ng-click='tc.likeComment(comment._id)' src="../static/images/black_like.png" alt="">
+            <span ng-show='comment.likes.length > 0'>Likes: {{comment.likes.length}}</span><img style="cursor: pointer" class="like" ng-click='tc.likeComment(comment._id)' src="../static/images/black_like.png" alt="">
             <span ng-show='tc.commentLikeFlash.id == comment._id'>{{tc.commentLikeFlash.str}}</span>
           </p>
           </li>
@@ -67,7 +67,7 @@
         </ul>
         <form>
           <p class="flash" ng-show='tc.commentFlash.id == post._id'>{{tc.commentFlash.str}}</p>
-          <input type="text" ng-model='comment'>
+          <textarea class="comment_box" ng-model='comment' rows="8" cols="80"></textarea>
           <input class="create" type="submit" ng-click='tc.createComment(post._id, comment); comment = "" ' value="Comment">
         </form>
       </div>

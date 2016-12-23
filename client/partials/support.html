@@ -13,20 +13,20 @@
 
     <form class="col-md-8 col-md-offset-2">
       <span class="col-md-12">
-        <label class="col-xs-12 col-md-4 support"><span class="support_inputs">Name (optional)</span> <input type="text" ng-model='asc.newSupport.user_name'></label>
-        <label class="col-xs-12 col-md-3 support"><span class="support_inputs">Email (optional)</span> <input type="email" ng-model='asc.newSupport.user_email'></label>
+        <label class="col-xs-12 col-md-4 support"><span class="support_inputs">Name (optional)</span> <input class="support_small "type="text" ng-model='asc.newSupport.user_name'></label>
+        <label class="col-xs-12 col-md-3 support"><span class="support_inputs">Email (optional)</span> <input class="support_small "type="email" ng-model='asc.newSupport.user_email'></label>
       </span>
 
       <span class="col-md-12">
-        <label class="col-xs-12 col-md-4 support"><span class="support_inputs">Subject</span> <input type="text" ng-model='asc.newSupport.subject'></label>
-        <label class="col-xs-12 col-md-3 support"><span class="support_inputs">Type</span> <select ng-model='asc.newSupport.type' ng-init='asc.newSupport.type="support"'>
+        <label class="col-xs-12 col-md-4 support"><span class="support_inputs">Subject</span> <input class="support_small "type="text" ng-model='asc.newSupport.subject'></label>
+        <label class="col-xs-12 col-md-3 support"><span class="support_inputs">Type</span> <select class="support_small "ng-model='asc.newSupport.type' ng-init='asc.newSupport.type="support"'>
           <option value="support">User Support</option>
           <option value="feedback">Feedback</option>
         </select></label>
       </span>
 
-      <span class="col-xs-12 col-md-offset-1">
-        <span class="description">Description</span> <textarea ng-model='asc.newSupport.description' rows="5" cols="35"></textarea>
+      <span class="col-xs-12 col-md-offset-1 support_box_offest">
+        <span class="description">Description</span> <textarea class="support_box" ng-model='asc.newSupport.description' rows="5" cols="35"></textarea>
         <input class="description create" type="submit" ng-click='asc.submit()' value="Submit Form">
       </span>
       <span class='flash col-xs-12 col-md-offset-2'>{{asc.flash}}</span>
