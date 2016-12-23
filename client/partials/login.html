@@ -4,12 +4,12 @@
     <span ng-show='dash.username'>
   </h4>
 
-  <div class="col-md-6 col-md-offset-4">
+  <div class="col-md-6 col-md-offset-4 log_area">
     <h1 class="col-md-offset-3 login_header">Login</h1>
 
     <form>
-      <label class="col-xs-12 col-md-4">Username: <input type="text" ng-model='lrc.log.username'></label>
-      <label class="col-xs-12 col-md-4">Password: <input type="password" ng-model='lrc.log.password'></label>
+      <label class="col-xs-12 col-md-4">Username: <input class="log_input" type="text" ng-model='lrc.log.username'></label>
+      <label class="col-xs-12 col-md-4">Password: <input class="log_input" type="password" ng-model='lrc.log.password'></label>
       <span class="col-xs-12"><input class='create' type="submit" ng-click='lrc.login()' value="Login"></span>
     </form>
     <span class='flash col-xs-12 log_flash'>{{lrc.loginFlash}}</span>

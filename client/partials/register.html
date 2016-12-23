@@ -3,39 +3,39 @@
     <a href="#/">Login</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='dash.username'>
   </h4>
-  <div class="col-xs-12 col-md-8 col-md-offset-3">
-    <h1 class="col-md-offset-4">Registration</h1>
+  <div class="col-xs-12 col-md-8 reg_area panel panel-body panel-default">
+    <h1 class="reg_title">Registration</h1>
 
     <form>
 
       <span class="col-md-4 col-md-offset-1">
-        <label class="col-xs-12"><span class="name">First Name (optional):</span> <input type="text" ng-model='lrc.reg.first_name'></label>
-        <label class="col-xs-12"><span class="name">Last Name (optional):</span> <input type="text" ng-model='lrc.reg.last_name'></label>
-        <label class="col-xs-12"><span class="name">Favorite Game (optional):</span> <input type="text" ng-model='lrc.reg.fav_game'></label>
+        <label class="col-xs-12"><span class="name">First Name (optional):</span> <input class="reg_input" type="text" ng-model='lrc.reg.first_name'></label>
+        <label class="col-xs-12"><span class="name">Last Name (optional):</span> <input class="reg_input" type="text" ng-model='lrc.reg.last_name'></label>
+        <label class="col-xs-12"><span class="name">Favorite Game (optional):</span> <input class="reg_input" type="text" ng-model='lrc.reg.fav_game'></label>
       </span>
 
       <span class="col-md-4 col-md-offset-1">
-        <label class="col-xs-12"><span class="name">Username:</span> <input type="text" ng-model='lrc.reg.username'></label>
-        <label class="col-xs-12"><span class="name">Email:</span> <input type="email" ng-model='lrc.reg.email'></label>
-        <label class="col-xs-12"><span class="name">Age (optional):</span> <input type="number" ng-model='lrc.reg.age'></label>
+        <label class="col-xs-12"><span class="name">Username:</span> <input class="reg_input" type="text" ng-model='lrc.reg.username'></label>
+        <label class="col-xs-12"><span class="name">Email:</span> <input class="reg_input" type="email" ng-model='lrc.reg.email'></label>
+        <label class="col-xs-12"><span class="name">Age (optional):</span> <input class="reg_input" type="number" ng-model='lrc.reg.age'></label>
 
 
       </span>
 
       <span class="col-md-4 col-md-offset-1">
-        <label class="col-xs-12"><span class="name">Hobbies (optional):</span> <textarea ng-model='lrc.reg.hobbies' rows="8" cols="35"></textarea></label>
+        <label class="col-xs-12"><span class="name">Hobbies (optional):</span> <textarea class="reg_box" ng-model='lrc.reg.hobbies' rows="8" cols="35"></textarea></label>
       </span>
 
       <span class="col-md-4 col-md-offset-1">
-        <label class="col-xs-12"><span class="name">Biography (optional):</span> <textarea ng-model='lrc.reg.bio' rows="8" cols="35"></textarea></label>
+        <label class="col-xs-12"><span class="name">Biography (optional):</span> <textarea class="reg_box" ng-model='lrc.reg.bio' rows="8" cols="35"></textarea></label>
       </span>
 
       <span class="col-md-4 col-md-offset-1">
-        <label class="col-xs-12"><span class="name">Password:</span> <input type="password" ng-model='lrc.reg.password'></label>
+        <label class="col-xs-12"><span class="name">Password:</span> <input class="reg_input" type="password" ng-model='lrc.reg.password'></label>
       </span>
 
       <span class="col-md-4 col-md-offset-1">
-        <label class="col-xs-12"><span class="name">Cofirm Password:</span> <input type="password" ng-model='lrc.reg.confirm'></label>
+        <label class="col-xs-12"><span class="name">Cofirm Password:</span> <input class="reg_input" type="password" ng-model='lrc.reg.confirm'></label>
       </span>
 
       <span class="col-xs-12 col-md-offset-1 reg"><h4><input class='reg_button' type="submit" ng-click='lrc.register()' value="Register!"></h4></span>
