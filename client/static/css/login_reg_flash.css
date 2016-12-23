@@ -22,3 +22,72 @@
 .top_buffer{
   margin-top: 10px;
 }
+@media all and (min-width: 1500px){ /* EXTRA LARGE */
+  .reg_input{
+    width: 450px;
+    height: 30px;
+  }
+  .reg_box{
+    width: 450px;
+  }
+  .reg_area{
+    margin-left: 20%
+  }
+  .reg_title{
+    margin-left: 40%;
+    margin-bottom: 20px;
+  }
+  .log_input{
+    width: 250px;
+    height: 30px;
+  }
+}
+@media all and (max-width: 1499px){ /* LARGE */
+  .reg_input{
+    width: 330px;
+    height: 30px;
+  }
+  .reg_box{
+    width: 330px;
+  }
+  .reg_area{
+    margin-left: 20%
+  }
+  .reg_title{
+    margin-left: 40%;
+    margin-bottom: 20px;
+  }
+  .log_input{
+    width: 200px;
+    height: 30px;
+  }
+  .log_area{
+    margin-left: 36%;
+  }
+}
+@media all and (max-width: 959px){ /* MEDIUM */
+  .reg_input{
+    width: 330px;
+    height: 30px;
+  }
+  .reg_box{
+    width: 330px;
+  }
+  .reg_area{
+    margin-left: 0%
+  }
+  .reg_title{
+    margin-left: 40%;
+    margin-bottom: 20px;
+  }
+
+  .log_area{
+    margin-left: 0%;
+  }
+}
+@media all and (max-width: 480px){ /* SMALL AND EXTRA SMALL */
+  .log_input{
+    width: 200px;
+    height: 25px;
+  }
+}
