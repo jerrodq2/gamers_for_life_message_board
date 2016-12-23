@@ -8,13 +8,13 @@
 
   <div class="col-xs-12 col-md-10 col-md-offset-2">
 
-    <h1 class="col-md-11 col-md-offset-3">{{cc.category}}</h1>
-    <span class="col-xs-12">
+    <h1 class="col-md-11 col-md-offset-3 category_header">{{cc.category}}</h1>
+    <span class="col-xs-12 category_table">
       <h4>Topics in this category: {{cc.topics.length}}</h4>
       <input type="text" ng-model='search' placeholder="Search....">
     </span>
 
-    <table class="col-xs-10 personal_table">
+    <table class="col-xs-10 personal_table category_table">
       <tr>
         <th class="col-xs-2 table_row top_row">Topic</th>
         <th class="col-xs-4 table_row top_row">Description</th>
@@ -38,7 +38,7 @@
       </tr>
     </table>
 
-    <div class="search">
+    <div class="search category_table">
       Sort by: <select ng-model='orderOption' ng-init="orderOption='date'">
         <option value="date">Most Recent</option>
         <option value="username">User</option>
@@ -50,7 +50,7 @@
         <option value="true">Descending</option>
       </select>
     </div>
-    <div class="category_search">
+    <div class="category_search category_table">
       <h4 class="col-xs-12">Search for other categories</h4>
       <span class="col-xs-12">
         <select ng-model='category' ng-init="category='Consoles'">
