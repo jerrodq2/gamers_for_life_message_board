@@ -5,71 +5,79 @@
     <a ng-show='cc.username' href="#/profile/{{cc.id}}">Profile</a> <a href="#/dashboard">Dashboard</a> <a href="#/members">Members</a> <a href="#/about">About</a> <a href="#/support">Support/Feedback</a>
     <span ng-show='cc.username'><a href="#/"ng-click='cc.logout()'>Logout</a></span>
   </h4>
+  <div class="container">
 
-  <div class="col-xs-12 col-md-10 col-md-offset-2">
 
-    <h1 class="col-md-11 col-md-offset-3 category_header">{{cc.category}}</h1>
-    <span class="col-xs-12 category_table">
-      <h4>Topics in this category: {{cc.topics.length}}</h4>
-      <input type="text" ng-model='search' placeholder="Search....">
-    </span>
+    <div class="col-xs-12 col-md-10 col-md-offset-2 category_box">
 
-    <table class="col-xs-10 personal_table category_table">
-      <tr>
-        <th class="col-xs-2 table_row top_row">Topic</th>
-        <th class="col-xs-4 table_row top_row">Description</th>
-        <th class="col-xs-2 table_row top_row">Started By</th>
-        <th class="col-xs-1 table_row top_row">Posts</th>
-        <th class="col-xs-2 table_row_end top_row">Last Activity</th>
-      </tr>
-      <tr ng-show='cc.topics.length == 0'>
-        <td class="col-xs-2 table_row row center"> - </td>
-        <td class="col-xs-4 table_row row center"> - </td>
-        <td class="col-xs-2 table_row row center"> - </td>
-        <td class="col-xs-1 table_row row center"> - </td>
-        <td class="col-xs-2 table_row_end row center"> - </td>
-      </tr>
-      <tr ng-repeat='topic in cc.topics | filter: search | orderBy: orderOption: reverseOption'>
-        <td class="col-xs-2 table_row row"><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
-        <td class="col-xs-4 table_row row">{{topic.description}}</td>
-        <td class="col-xs-2 table_row row center"><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
-        <td class="col-xs-1 table_row row center">{{topic.posts.length}}</td>
-        <td class="col-xs-2 table_row_end row center">{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
-      </tr>
-    </table>
-
-    <div class="search category_table">
-      Sort by: <select ng-model='orderOption' ng-init="orderOption='date'">
-        <option value="date">Most Recent</option>
-        <option value="username">User</option>
-        <option value="topic">Topic</option>
-        <option value="posts">Posts</option>
-      </select>
-      <select ng-model='reverseOption' ng-init="reverseOption=''">
-        <option value="">Ascending</option>
-        <option value="true">Descending</option>
-      </select>
-    </div>
-    <div class="category_search category_table">
-      <h4 class="col-xs-12">Search for other categories</h4>
-      <span class="col-xs-12">
-        <select ng-model='category' ng-init="category='Consoles'">
-          <option value="Consoles">Consoles</option>
-          <option value="Retro Gaming">Retro Gaming</option>
-          <option value="News">News</option>
-          <option value="Upcoming Games/Tech">Upcoming Games/Tech</option>
-          <option value="Specific Series">Specific Series</option>
-          <option value="Specific Game">Specific Game</option>
-          <option value="PC">PC</option>
-          <option value="Indie">Indie</option>
-          <option value="Handheld">Handheld</option>
-          <option value="Collecting">Collecting</option>
-          <option value="Conventions and Events">Conventions and Events</option>
-          <option value="Other">Other</option>
-        </select>
-        <a href="#/category/{{category}}">Search</a>
+      <h1 class="col-md-9 col-md-offset-3 category_header">{{cc.category}}</h1>
+      <span class="col-xs-12 category_table">
+        <h4>Topics in this category: {{cc.topics.length}}</h4>
+        <input type="text" ng-model='search' placeholder="Search....">
       </span>
-    </div>
 
-  </div>
+      <table class="col-xs-10 personal_table category_table">
+        <tr>
+          <th class="col-xs-2 table_row top_row">Topic</th>
+          <th class="col-xs-4 table_row top_row">Description</th>
+          <th class="col-xs-2 table_row top_row">Started By</th>
+          <th class="col-xs-1 table_row top_row">Posts</th>
+          <th class="col-xs-2 table_row_end top_row">Last Activity</th>
+        </tr>
+        <tr ng-show='cc.topics.length == 0'>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-4 table_row row center"> - </td>
+          <td class="col-xs-2 table_row row center"> - </td>
+          <td class="col-xs-1 table_row row center"> - </td>
+          <td class="col-xs-2 table_row_end row center"> - </td>
+        </tr>
+        <tr ng-repeat='topic in cc.topics | filter: search | orderBy: orderOption: reverseOption'>
+          <td class="col-xs-2 table_row row"><a href="#/topic/{{topic._id}}">{{topic.topic}}</a></td>
+          <td class="col-xs-4 table_row row">{{topic.description}}</td>
+          <td class="col-xs-2 table_row row center"><a href="#/profile/{{topic.userId}}">{{topic.username}}</a></td>
+          <td class="col-xs-1 table_row row center">{{topic.posts.length}}</td>
+          <td class="col-xs-2 table_row_end row center">{{topic.updatedAt | date: "MMM d, y h:mm a"}}</td>
+        </tr>
+      </table>
+
+      <div class="search category_table">
+        Sort by: <select ng-model='orderOption' ng-init="orderOption='date'">
+          <option value="date">Most Recent</option>
+          <option value="username">User</option>
+          <option value="topic">Topic</option>
+          <option value="posts">Posts</option>
+        </select>
+        <select ng-model='reverseOption' ng-init="reverseOption=''">
+          <option value="">Ascending</option>
+          <option value="true">Descending</option>
+        </select>
+      </div>
+      <div class="category_search category_table">
+        <h4 class="col-xs-12">Search for other categories</h4>
+        <span class="col-xs-12">
+          <select ng-model='category' ng-init="category='Consoles'">
+            <option value="Consoles">Consoles</option>
+            <option value="Retro Gaming">Retro Gaming</option>
+            <option value="News">News</option>
+            <option value="Upcoming Games/Tech">Upcoming Games/Tech</option>
+            <option value="Specific Series">Specific Series</option>
+            <option value="Specific Game">Specific Game</option>
+            <option value="PC">PC</option>
+            <option value="Indie">Indie</option>
+            <option value="Handheld">Handheld</option>
+            <option value="Collecting">Collecting</option>
+            <option value="Conventions and Events">Conventions and Events</option>
+            <option value="Other">Other</option>
+          </select>
+          <a href="#/category/{{category}}">Search</a>
+        </span>
+      </div>
+
+    </div>
+  </div><!-- END CONTAINER -->
+
+
+
+
+
 </div>
