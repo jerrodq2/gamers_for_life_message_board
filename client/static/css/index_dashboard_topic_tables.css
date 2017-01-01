@@ -139,10 +139,13 @@ li{
     margin-left: 25%
   }
   .category_header{
-    margin-left: 30%
+    margin-left: 31%
   }
   .category_table{
-    margin-left: 10%
+    margin-left: 0%
+  }
+  .category_box{
+    margin-left: 14%
   }
   .post{
     margin-bottom: 30px;
@@ -168,7 +171,10 @@ li{
     margin-left: 20%
   }
   .category_header{
-    margin-left: 30%
+    margin-left: 34%
+  }
+  .category_box{
+    margin-left: 14%
   }
   .post{
     margin-bottom: 30px;
@@ -196,6 +202,9 @@ li{
   .category_header{
     margin-left: 35%
   }
+  .category_box{
+    margin-left: 0%
+  }
   .post{
     margin-bottom: 30px;
     margin-left: -10%;
@@ -213,6 +222,9 @@ li{
     margin-left: 0%
   }
   .category_header{
+    margin-left: 0%
+  }
+  .category_box{
     margin-left: 0%
   }
   .post{
