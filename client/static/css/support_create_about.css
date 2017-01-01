@@ -46,6 +46,9 @@
   .support_box_offest{
     margin-left: -3%
   }
+  .create_box{
+    margin-left: 38%
+  }
 }
 @media all and (max-width: 1499px){ /* LARGE */
   .support_small{
@@ -58,6 +61,9 @@
   .support_box_offest{
     margin-left: -15%
   }
+  .create_box{
+    margin-left: 38%
+  }
 }
 @media all and (max-width: 959px){ /* MEDIUM */
   .support_box{
@@ -67,6 +73,12 @@
   .support_box_offest{
     margin-left: 0%
   }
+  .create_header{
+    margin-left: 13%
+  }
+  .create_box{
+    margin-left:33%
+  }
 }
 @media all and (max-width: 480px){ /* SMALL AND EXTRA SMALL */
   .support_box{
@@ -74,6 +86,9 @@
     height: 150px;
   }
   .support_box_offest{
+    margin-left: 0%
+  }
+  .create_box{
     margin-left: 0%
   }
 }
