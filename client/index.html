@@ -1,23 +1,43 @@
 <!DOCTYPE html>
-<html ng-app='myApp'>
+<html lang="en" ng-app='myApp'>
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="static/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="static/bootstrap/bootstrap-theme.min.css">
+    <title>Gamer's For Life Messaging Board</title>
+    <meta name="description" content="Messaging board made by gamers for gamers">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/ico" href="static/images/gamers-favicon.ico">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- End of Bootstrap and jQuery Links -->
+
+
     <link rel="stylesheet" href="static/css/index_dashboard_topic_tables.css">
     <link rel="stylesheet" href="static/css/support_create_about.css">
     <link rel="stylesheet" href="static/css/profile_editprofile.css">
     <link rel="stylesheet" href="static/css/login_reg_flash.css">
+    <!-- End of Stylesheets -->
+
+
     <script src="angular/angular.js" charset="utf-8"></script>
     <script src="angular-route/angular-route.js" charset="utf-8"></script>
     <script src = 'angular-cookies/angular-cookies.js'></script>
     <!-- End Bower Components -->
+
+    <script type="text/javascript">
+    var date = new Date()
+      console.log("entered index: " + date);
+    </script>
+
     <script src="app.js" charset="utf-8"></script>
     <script src='./factories/loginRegFactory.js' charset="utf-8"></script>
     <script src='./factories/mainFactory.js' charset="utf-8"></script>
     <script src='./factories/userFactory.js' charset="utf-8"></script>
     <script src='./factories/admin_supportFactory.js' charset="utf-8"></script>
+    <!-- End Factories -->
+
     <script src="./controllers/loginRegController.js" charset="utf-8"></script>
     <script src="./controllers/dashboardController.js" charset="utf-8"></script>
     <script src="./controllers/topicController.js" charset="utf-8"></script>
@@ -25,8 +45,12 @@
     <script src="./controllers/profileController.js" charset="utf-8"></script>
     <script src="./controllers/categoryController.js" charset="utf-8"></script>
     <script src="./controllers/admin_supportController.js" charset="utf-8"></script>
+    <!-- End Controllers -->
+
     </style>
   </head>
+
+
   <body>
     <h1 class="col-xs-12 title">Gamers For Life Message Board</h1>
     <hr>
@@ -38,7 +62,6 @@
       <p>&copy; 2016 Jerrod Quintana</p>
     </footer>
 
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
+
   </body>
 </html>
